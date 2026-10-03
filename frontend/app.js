@@ -414,7 +414,7 @@ async function runSummary(){const box=document.querySelector('#ai-summary-result
 async function saveSettings(){const err=document.querySelector('#settings-error');try{const body={suspicious_threshold:Number(document.querySelector('#setting-suspicious').value),high_threshold:Number(document.querySelector('#setting-high').value),active_model:state.activeModel,theme:document.querySelector('#setting-theme')?.value||state.settings.theme||'dark'};const r=await fetch('/api/settings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.detail||'บันทึกไม่สำเร็จ');state.settings={...state.settings,...d};applyTheme(body.theme);toast('บันทึกการตั้งค่าแล้ว');openView('settings');}catch(e){err.textContent=e.message;err.hidden=false;}}
 async function sendChat(question){const body=document.querySelector('.chat-body');body.insertAdjacentHTML('beforeend',`<div class="user-message">${esc(question)}</div><div class="assistant-message typing-message">กำลังอ่านข้อมูลในแฟ้ม…</div>`);body.scrollTop=body.scrollHeight;const typing=body.querySelector('.typing-message:last-child');try{const r=await fetch('/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,history:state.chatHistory,transactions:aiRows(filteredRows())})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.detail||'AI ยังไม่พร้อมใช้งาน');typing.textContent=d.answer;state.chatHistory.push({role:'user',content:question},{role:'assistant',content:d.answer});state.chatHistory=state.chatHistory.slice(-8);}catch(e){typing.textContent=`ยังตอบไม่ได้: ${e.message}`;}body.scrollTop=body.scrollHeight;}
 
-document.addEventListener('click',event=>{
+document.addEventListener('click',async event=>{
   if(document.documentElement.dataset.theme==='mermaid' && !event.target.closest('input,select,textarea')) mermaidGlitter(event.clientX,event.clientY);
   const viewButton=event.target.closest('[data-view]');if(viewButton){event.preventDefault();openView(viewButton.dataset.view);return;}
   const caseButton=event.target.closest('[data-case]');if(caseButton){if(caseButton.dataset.case==='__new_case__'){createCase();return;}activateCase(caseButton.dataset.case,cases.findIndex(c=>c.id===caseButton.dataset.case)<cases.findIndex(c=>c.id===activeCaseId)?-1:1);toast(`เปิด ${activeCase().name}`);return;}
@@ -428,7 +428,36 @@ document.addEventListener('click',event=>{
   if(event.target.closest('#ai-summary')){runSummary();return;}
   if(event.target.closest('#case-score-badge')){showCaseScore();return;}
   const deleteFile=event.target.closest('[data-delete-file]');if(deleteFile){deleteImportedFile(deleteFile.dataset.deleteFile);return;}
-  const model=event.target.closest('[data-model]');if(model){state.activeModel=model.dataset.model;fetch('/api/settings').then(r=>r.json()).then(s=>{state.settings={...state.settings,...s};return fetch('/api/settings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({...state.settings,active_model:state.activeModel})});}).then(async r=>{const d=await r.json();if(!r.ok)throw new Error(d.detail||'บันทึกไม่ได้');if(sampleRows.length){const oldRows=[...sampleRows];const scored=await fetch('/api/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({transactions:sampleRows.map(x=>({transaction_date:x.rawDate||x.date,description:x.description,amount:x.amount,transaction_type:x.transaction_type||x.type,balance:x.balance,account:x.account}))})});const result=await scored.json().catch(()=>({}));if(scored.ok)updateActiveRows((result.transactions||[]).map((x,i)=>normalizeRow({...x,ownerName:oldRows[i]?.ownerName||'บุคคลที่ 1'})),activeCase().source);}toast('เลือกโมเดลและคำนวณคะแนนในแฟ้มนี้แล้ว');modelsView();}).catch(e=>toast(e.message));return;}
+  const model=event.target.closest('[data-model]');if(model){
+    const selectedModel=model.dataset.model;
+    state.activeModel=selectedModel;
+    try{
+      const settingsResponse=await fetch('/api/settings');
+      const settingsData=await settingsResponse.json().catch(()=>({}));
+      if(!settingsResponse.ok) throw new Error(settingsData.detail||`โหลดการตั้งค่าไม่สำเร็จ (${settingsResponse.status})`);
+      state.settings={...state.settings,...settingsData,active_model:selectedModel};
+      const saveResponse=await fetch('/api/settings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        suspicious_threshold:Number(state.settings.suspicious_threshold),
+        high_threshold:Number(state.settings.high_threshold),
+        active_model:selectedModel
+      })});
+      const saveData=await saveResponse.json().catch(()=>({}));
+      if(!saveResponse.ok) throw new Error(saveData.detail||`เปลี่ยนโมเดลไม่สำเร็จ (${saveResponse.status})`);
+      state.settings={...state.settings,...saveData,active_model:selectedModel};
+      if(sampleRows.length){
+        const oldRows=[...sampleRows];
+        const scored=await fetch('/api/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({transactions:sampleRows.map(x=>({transaction_date:x.rawDate||x.date,description:x.description,amount:x.amount,transaction_type:x.transaction_type||x.type,balance:x.balance,account:x.account}))})});
+        const result=await scored.json().catch(()=>({}));
+        if(!scored.ok) throw new Error(result.detail||`คำนวณคะแนนด้วยโมเดลใหม่ไม่สำเร็จ (${scored.status})`);
+        updateActiveRows((result.transactions||[]).map((x,i)=>normalizeRow({...x,ownerName:oldRows[i]?.ownerName||'บุคคลที่ 1'})),activeCase().source);
+      }
+      toast('เลือกโมเดลและคำนวณคะแนนในแฟ้มนี้แล้ว');
+      modelsView();
+    }catch(e){
+      toast(e.message||'เปลี่ยนโมเดลไม่สำเร็จ');
+      modelsView();
+    }
+    return;}
   const row=event.target.closest('[data-row]');if(row){showScore(Number(row.dataset.row));return;}
   if(event.target.closest('#ai-fab')){document.querySelector('#chat-panel').hidden=false;return;}if(event.target.closest('#chat-close')){document.querySelector('#chat-panel').hidden=true;return;}
   if(event.target.id==='file-input')return;if(event.target.closest('#choose-file')||event.target.closest('#drop-zone')){if(!event.target.closest('button')||event.target.closest('#choose-file')){event.preventDefault();document.querySelector('#file-input')?.click();}return;}
