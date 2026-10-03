@@ -1,0 +1,5 @@
+{
+  "suspicious_threshold": 10,
+  "high_threshold": 30,
+  "active_model": "random_forest"
+}

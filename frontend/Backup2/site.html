@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b3153">
+  <title>Detected.</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/analysis.css">
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <link rel="stylesheet" href="/static/mermaid-cute.css">
+</head>
+<body>
+  <section id="auth-screen" class="auth-screen">
+    <div id="auth-content"></div>
+    <p id="firebase-config-error" class="firebase-config-error" hidden>กรุณาตั้งค่า Firebase Configuration ก่อนเข้าสู่ระบบ</p>
+  </section>
+
+  <main id="protected-app" class="app-shell" hidden>
+    <header class="topbar">
+      <a class="brand" href="#home" data-view="home" aria-label="กลับหน้าภาพรวม">
+        <span class="brand-mark">D</span><span><b>Detected.</b><small>CASE FILES</small></span>
+      </a>
+      <div class="top-actions"><div class="top-status"><i></i><span class="top-status-label">พื้นที่ตรวจสอบส่วนตัว</span><span class="account-user-label" id="account-user-label"></span><button class="account-link" id="logout-button">ออกจากระบบ</button></div></div>
+    </header>
+
+    <section id="home" class="home-view">
+      <div class="intro-copy">
+        <span class="eyebrow">CASEWORK DESK / 01</span>
+        <h1>แฟ้มของคุณ</h1>
+        <p>เลือกเอกสารจากแฟ้มเพื่อเริ่มตรวจสอบ</p>
+      </div>
+      <div id="case-carousel" class="case-carousel" aria-label="เลือกแฟ้ม"></div>
+      <div class="folder-scene" aria-label="แฟ้มพร้อมการ์ดเมนู กวาดซ้ายหรือขวาเพื่อเปลี่ยนแฟ้ม" tabindex="0">
+        <button class="folder-peek folder-peek-prev" id="folder-peek-prev" aria-label="แสดงแฟ้มก่อนหน้า"><span class="folder-peek-tab"></span><small></small><b></b><i></i><i></i><i></i></button>
+        <button class="folder-peek folder-peek-next" id="folder-peek-next" aria-label="แสดงแฟ้มถัดไป"><span class="folder-peek-tab"></span><small></small><b></b><i></i><i></i><i></i></button>
+        <div class="folder-back"></div>
+        <div class="folder-front">
+          <span class="folder-tab">FINANCIAL REVIEW</span>
+          <span class="folder-stamp">CONFIDENTIAL</span>
+          <div class="folder-label"><small>DETECTED INTELLIGENCE ARCHIVE</small><strong id="folder-name">TRANSACTION REVIEW</strong><span id="folder-subtitle">CURRENT CASE</span></div>
+          <div class="folder-lines"><i></i><i></i><i></i></div>
+          <span class="folder-index">2026 / 01</span>
+        </div>
+
+        <button class="floating-card overview-card" data-view="overview">
+          <span class="card-pin"></span><span class="card-kicker">01 · CASE SUMMARY</span>
+          <span class="card-icon">▤</span><b>ภาพรวมแฟ้ม</b><small>รายการและระดับความเสี่ยง</small><span class="card-arrow">↗</span>
+        </button>
+        <button class="floating-card ledger-card" data-view="transactions">
+          <span class="card-pin"></span><span class="card-kicker">02 · STATEMENT</span>
+          <span class="ledger-mini"><i>DATE</i><i>DESCRIPTION</i><i>RISK</i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <b>ดูธุรกรรมทั้งหมด</b><small>ค้นหา กรอง และดูที่มาคะแนน</small><span class="card-arrow">↗</span>
+        </button>
+        <button class="floating-card upload-card" data-view="upload">
+          <span class="card-pin"></span><span class="card-kicker">03 · INCOMING EVIDENCE</span>
+          <span class="upload-icon">⇧</span><b>นำเข้า Statement</b><small>PDF · CSV · Excel</small><span class="card-arrow">↗</span>
+        </button>
+        <button class="floating-card settings-card" data-view="settings">
+          <span class="card-pin"></span><span class="card-kicker">04 · PREFERENCES</span>
+          <span class="settings-icon">⚙</span><b>ตั้งค่า</b><small>เกณฑ์และธีมการแสดงผล</small><span class="card-arrow">↗</span>
+        </button>
+        <button class="folder-arrow folder-arrow-prev" id="folder-prev" aria-label="แฟ้มก่อนหน้า">‹</button>
+        <button class="folder-arrow folder-arrow-next" id="folder-next" aria-label="แฟ้มถัดไป">›</button>
+      </div>
+    </section>
+
+    <section id="content" class="content-view" hidden>
+      <button class="back-button" data-view="home">← กลับไปที่แฟ้ม</button>
+      <nav class="view-nav" aria-label="เมนูหน้าแฟ้ม"><button data-view="cases">แฟ้มทั้งหมด</button><button data-view="overview">ภาพรวม</button><button data-view="transactions">ธุรกรรม</button><button data-view="upload">นำเข้า</button><button data-view="models">AI Model</button></nav>
+      <div id="view-content"></div>
+    </section>
+
+    <footer class="page-footer"><span>PRIVATE CASEWORK DESK</span><span>Detected.</span></footer>
+  </main>
+
+  <button class="ai-fab" id="ai-fab" aria-label="เปิด AI Chat"><span>✳</span><small>AI</small></button>
+  <aside class="chat-panel" id="chat-panel" hidden>
+    <div class="chat-head"><div><span class="ai-spark">✳</span><span><b>ผู้ช่วย AI</b><small>CASE ASSISTANT</small></span></div><button id="chat-close" aria-label="ปิดแชต">×</button></div>
+    <div class="chat-body"><div class="assistant-message">สวัสดีครับ ต้องการให้ช่วยดูข้อมูลส่วนไหนในแฟ้มนี้?</div><div class="chat-suggestion">ลองถาม: รายการไหนมีความเสี่ยงสูง</div></div>
+    <form class="chat-compose" id="chat-form"><input id="chat-input" placeholder="พิมพ์คำถาม..." autocomplete="off"><button aria-label="ส่งข้อความ">↑</button></form>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
+

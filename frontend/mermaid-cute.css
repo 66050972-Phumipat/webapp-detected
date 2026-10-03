@@ -1,0 +1,674 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;500;600;700&display=swap');
+/* =========================================================
+   DETECTED · MERMAID ROMANCE — EXTRA CUTE SKIN
+   Loaded last so it wins over legacy dashboard/analysis rules.
+   ========================================================= */
+:root[data-theme="mermaid"]{
+  --mr-bg:#071f3a;
+  --mr-deep:#0b3153;
+  --mr-pink:#ff9ed2;
+  --mr-pink2:#ffc9e8;
+  --mr-aqua:#8cecf2;
+  --mr-blue:#77c9f2;
+  --mr-purple:#c7b5ff;
+  --mr-text:#29415d;
+  --mr-panel:rgba(255,249,254,.88);
+}
+
+:root[data-theme="mermaid"] body{
+  color:#effbff;
+  background:
+    radial-gradient(circle at 20% 15%,rgba(255,160,216,.22),transparent 24%),
+    radial-gradient(circle at 85% 25%,rgba(126,232,245,.20),transparent 28%),
+    radial-gradient(circle at 50% 100%,rgba(132,122,255,.20),transparent 35%),
+    linear-gradient(180deg,#071d38 0%,#0a3c5c 48%,#112d5b 100%);
+  overflow-x:hidden;
+}
+:root[data-theme="mermaid"] body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.28;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.8) 0 1px,transparent 1.7px),
+    radial-gradient(circle,rgba(255,183,224,.8) 0 1px,transparent 1.8px);
+  background-size:58px 71px,91px 113px;
+  animation:mrDust 14s linear infinite;
+}
+@keyframes mrDust{to{background-position:58px -71px,-91px 113px}}
+
+/* Every page: remove the old hard-edged dark/cream look. */
+:root[data-theme="mermaid"] .app-shell,
+:root[data-theme="mermaid"] .content-view,
+:root[data-theme="mermaid"] .home,
+:root[data-theme="mermaid"] #home,
+:root[data-theme="mermaid"] #content{position:relative;z-index:1}
+:root[data-theme="mermaid"] .topbar{background:rgba(7,31,58,.22);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.20)}
+:root[data-theme="mermaid"] .brand{color:#fff8fd}
+:root[data-theme="mermaid"] .brand-mark{border-color:#ffc5e7;color:#fff;box-shadow:3px 3px 0 #a967d0;border-radius:12px}
+:root[data-theme="mermaid"] .brand b,
+:root[data-theme="mermaid"] .brand small,
+:root[data-theme="mermaid"] .preview-tag{color:#ffe8f6}
+:root[data-theme="mermaid"] .top-status{color:#d8f8ff}
+:root[data-theme="mermaid"] .top-status .account-link{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);border-radius:999px;color:#fff}
+
+/* Typography — cute, round, Thai-friendly. */
+:root[data-theme="mermaid"] body,
+:root[data-theme="mermaid"] button,
+:root[data-theme="mermaid"] input,
+:root[data-theme="mermaid"] select,
+:root[data-theme="mermaid"] textarea,
+:root[data-theme="mermaid"] table{font-family:'Mali',Tahoma,sans-serif}
+:root[data-theme="mermaid"] h1,
+:root[data-theme="mermaid"] h2,
+:root[data-theme="mermaid"] h3,
+:root[data-theme="mermaid"] h4,
+:root[data-theme="mermaid"] h5,
+:root[data-theme="mermaid"] h6,
+:root[data-theme="mermaid"] b,
+:root[data-theme="mermaid"] strong{font-family:'Itim','Mali',sans-serif;font-weight:500}
+:root[data-theme="mermaid"] .eyebrow,
+:root[data-theme="mermaid"] .card-kicker,
+:root[data-theme="mermaid"] .folder-index,
+:root[data-theme="mermaid"] .folder-tab,
+:root[data-theme="mermaid"] .page-footer,
+:root[data-theme="mermaid"] .case-context,
+:root[data-theme="mermaid"] .model-id-card>small{font-family:'Itim','Mali',sans-serif;letter-spacing:.5px}
+
+/* Generic inner-page panels and old components. */
+:root[data-theme="mermaid"] .preview-panel,
+:root[data-theme="mermaid"] .settings-real,
+:root[data-theme="mermaid"] .settings-real.preview-panel,
+:root[data-theme="mermaid"] .user-profile-card,
+:root[data-theme="mermaid"] .user-directory,
+:root[data-theme="mermaid"] .permission-note,
+:root[data-theme="mermaid"] .models-panel,
+:root[data-theme="mermaid"] .model-card,
+:root[data-theme="mermaid"] .model-id-card,
+:root[data-theme="mermaid"] .upload-panel,
+:root[data-theme="mermaid"] .analysis-panel,
+:root[data-theme="mermaid"] .table-panel,
+:root[data-theme="mermaid"] .score-card,
+:root[data-theme="mermaid"] .modal-card,
+:root[data-theme="mermaid"] .preview-list button,
+:root[data-theme="mermaid"] .case-tile,
+:root[data-theme="mermaid"] .case-add,
+:root[data-theme="mermaid"] .extra-pages button,
+:root[data-theme="mermaid"] .cashflow-card,
+:root[data-theme="mermaid"] .expense-category,
+:root[data-theme="mermaid"] .detail-grid>div,
+:root[data-theme="mermaid"] .detail-score,
+:root[data-theme="mermaid"] .ai-summary-result{
+  background:linear-gradient(145deg,rgba(255,250,254,.94),rgba(221,247,255,.86))!important;
+  color:var(--mr-text)!important;
+  border:1px solid rgba(255,255,255,.68)!important;
+  border-radius:20px!important;
+  box-shadow:0 14px 38px rgba(4,29,61,.24),inset 0 1px rgba(255,255,255,.85)!important;
+}
+:root[data-theme="mermaid"] .preview-panel h3,
+:root[data-theme="mermaid"] .preview-panel p,
+:root[data-theme="mermaid"] .settings-real p,
+:root[data-theme="mermaid"] .model-note,
+:root[data-theme="mermaid"] .view-heading p,
+:root[data-theme="mermaid"] .empty-note,
+:root[data-theme="mermaid"] .cashflow-card span,
+:root[data-theme="mermaid"] .cashflow-card small,
+:root[data-theme="mermaid"] .expense-category small,
+:root[data-theme="mermaid"] .detail-grid small{color:#61768a!important}
+
+/* Navigation / tabs / old buttons. */
+:root[data-theme="mermaid"] .view-nav button,
+:root[data-theme="mermaid"] .view-tools button,
+:root[data-theme="mermaid"] .back-button,
+:root[data-theme="mermaid"] .ai-summary-button,
+:root[data-theme="mermaid"] .settings-save,
+:root[data-theme="mermaid"] .provider-button,
+:root[data-theme="mermaid"] .text-action,
+:root[data-theme="mermaid"] .account-link,
+:root[data-theme="mermaid"] .case-actions button,
+:root[data-theme="mermaid"] .extra-pages button{
+  border-radius:999px!important;
+  border:1px solid rgba(255,255,255,.62)!important;
+  background:linear-gradient(135deg,#ffd8ec,#bdf3f5)!important;
+  color:#573c65!important;
+  box-shadow:0 7px 18px rgba(255,148,207,.20),inset 0 1px #fff!important;
+}
+:root[data-theme="mermaid"] .view-nav button.active,
+:root[data-theme="mermaid"] .view-nav button:hover,
+:root[data-theme="mermaid"] .settings-save:hover,
+:root[data-theme="mermaid"] .provider-button:hover,
+:root[data-theme="mermaid"] .extra-pages button:hover{background:linear-gradient(135deg,#ffb9dc,#9fe9f2)!important;color:#4e315c!important}
+
+/* Inputs, selects, search and forms. */
+:root[data-theme="mermaid"] input,
+:root[data-theme="mermaid"] select,
+:root[data-theme="mermaid"] textarea,
+:root[data-theme="mermaid"] .month-select,
+:root[data-theme="mermaid"] .preview-filter input,
+:root[data-theme="mermaid"] .preview-filter select{
+  background:rgba(255,253,255,.92)!important;color:#2e4561!important;border:1px solid #dfcbe7!important;border-radius:14px!important;box-shadow:inset 0 2px 8px rgba(66,80,115,.06)!important;
+}
+:root[data-theme="mermaid"] input::placeholder,
+:root[data-theme="mermaid"] textarea::placeholder{color:#93a1b0}
+
+/* Tables: no more old beige paper. */
+:root[data-theme="mermaid"] .sample-table,
+:root[data-theme="mermaid"] .ledger-table,
+:root[data-theme="mermaid"] .ledger-table-scroll table{background:rgba(255,250,254,.9)!important;color:#304660!important;border-radius:18px;overflow:hidden}
+:root[data-theme="mermaid"] .sample-table th,
+:root[data-theme="mermaid"] .ledger-table th{background:linear-gradient(135deg,#ffddec,#d8f8fb)!important;color:#684e72!important;border-color:#ecd9e9!important}
+:root[data-theme="mermaid"] .sample-table td,
+:root[data-theme="mermaid"] .ledger-table td{border-color:#eadde9!important}
+:root[data-theme="mermaid"] .sample-table tbody tr:hover,
+:root[data-theme="mermaid"] .ledger-table tbody tr:hover{background:#fff0f8!important}
+
+/* Login / auth: same theme, no old dark page. */
+:root[data-theme="mermaid"] .auth-screen{background:radial-gradient(circle at 50% 18%,rgba(255,190,225,.28),transparent 30%),linear-gradient(160deg,#071c35,#0a4964 55%,#4a2e63)!important}
+:root[data-theme="mermaid"] .firebase-login-card,
+:root[data-theme="mermaid"] .login-card{background:linear-gradient(145deg,rgba(255,251,254,.97),rgba(224,249,255,.94))!important;color:#2e405a!important;border-radius:30px!important;box-shadow:0 25px 65px rgba(0,0,0,.35),inset 0 1px #fff!important}
+
+/* Home board refinements. */
+:root[data-theme="mermaid"] .folder-back{background:linear-gradient(155deg,#8cecf2,#62bde8 48%,#436bb8)!important;box-shadow:inset 0 2px #efffffaa,inset 0 -13px #34538e,0 25px 45px rgba(0,0,0,.28)!important}
+:root[data-theme="mermaid"] .folder-front{background:linear-gradient(145deg,#6edcf0,#65aee4 55%,#566fc0)!important;box-shadow:inset 0 2px #f4ffff99,inset 0 -11px #40599c!important}
+:root[data-theme="mermaid"] .folder-label{background:linear-gradient(145deg,#fff9fd,#e5f7ff)!important;color:#30425e!important;border-radius:16px;box-shadow:0 12px 28px rgba(30,65,110,.25)!important}
+:root[data-theme="mermaid"] .overview-card{background:linear-gradient(155deg,#fffaff,#f6d9ed)!important}
+:root[data-theme="mermaid"] .ledger-card{background:linear-gradient(155deg,#f5fdff,#dcecf9)!important}
+:root[data-theme="mermaid"] .upload-card{background:linear-gradient(145deg,#e969a4,#aa61d0)!important}
+:root[data-theme="mermaid"] .settings-card{background:linear-gradient(145deg,#f0e9ff,#c7dcf5)!important}
+
+/* Mermaid environment. */
+.mermaid-theme-scene{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+:root[data-theme="mermaid"] .mermaid-theme-scene{display:block}
+.sea-fish,.sea-jelly,.sea-sponge,.sea-coral{position:absolute;user-select:none;filter:drop-shadow(0 5px 8px rgba(0,0,0,.2));will-change:transform}
+.sea-fish{font-size:28px;opacity:.78;animation:mrFishSwim 22s linear infinite}
+.fish1{top:25%;left:-8%;animation-duration:19s}.fish2{top:46%;left:-12%;font-size:22px;animation-duration:27s;animation-delay:-8s}.fish3{top:67%;left:-10%;font-size:25px;animation-duration:31s;animation-delay:-14s}.fish4{top:83%;left:-8%;font-size:20px;animation-duration:24s;animation-delay:-4s}
+@keyframes mrFishSwim{0%{transform:translateX(-10vw) translateY(0) scaleX(1)}45%{transform:translateX(48vw) translateY(-20px) scaleX(1)}50%{transform:translateX(55vw) translateY(4px) scaleX(-1)}100%{transform:translateX(115vw) translateY(-8px) scaleX(-1)}}
+.sea-jelly{font-size:42px;opacity:.25;animation:mrJelly 9s ease-in-out infinite alternate}.jelly1{right:9%;top:34%}.jelly2{left:5%;top:59%;font-size:34px;animation-delay:-4s}@keyframes mrJelly{from{transform:translateY(12px)}to{transform:translateY(-28px)}}
+.sea-sponge{width:58px;height:62px;opacity:.58;background:radial-gradient(circle at 20% 25%,#ffd37d 0 7px,transparent 8px),radial-gradient(circle at 65% 35%,#ffb5d7 0 6px,transparent 7px),radial-gradient(circle at 42% 72%,#b9a6ff 0 7px,transparent 8px),linear-gradient(145deg,#ffc6df,#c3b2ff);border-radius:45% 55% 42% 58%;box-shadow:0 8px 18px rgba(20,34,70,.18);animation:mrSponge 6s ease-in-out infinite alternate}.sponge1{left:8%;bottom:7%}.sponge2{right:7%;bottom:10%;width:43px;height:48px;animation-delay:-3s}@keyframes mrSponge{from{transform:translateY(3px) rotate(-3deg)}to{transform:translateY(-9px) rotate(4deg)}}
+.sea-coral{font-size:46px;opacity:.42;bottom:2%;animation:mrCoral 7s ease-in-out infinite alternate}.coral1{left:22%}.coral2{right:22%;font-size:36px;animation-delay:-2s}@keyframes mrCoral{from{transform:translateY(3px)}to{transform:translateY(-7px)}}
+
+/* Bubbles upgraded: many little bubbles rising. */
+:root[data-theme="mermaid"] .mermaid-bubbles{position:absolute;inset:0;opacity:.55;background-image:radial-gradient(circle at 12% 90%,transparent 0 4px,rgba(255,255,255,.65) 5px,transparent 7px),radial-gradient(circle at 24% 78%,transparent 0 2px,rgba(255,255,255,.65) 3px,transparent 5px),radial-gradient(circle at 48% 92%,transparent 0 5px,rgba(255,255,255,.55) 6px,transparent 8px),radial-gradient(circle at 74% 82%,transparent 0 3px,rgba(255,255,255,.6) 4px,transparent 6px),radial-gradient(circle at 88% 93%,transparent 0 4px,rgba(255,255,255,.55) 5px,transparent 7px);animation:mrBubbles 10s ease-in-out infinite alternate}
+@keyframes mrBubbles{from{transform:translateY(18px)}to{transform:translateY(-42px)}}
+
+/* Glitter + hearts on click. */
+:root[data-theme="mermaid"] .glitter-particle{color:#fff4fb;text-shadow:0 0 9px #ff8ed0,0 0 18px #8debf3;font-size:14px}
+:root[data-theme="mermaid"] .mermaid-hearts{color:rgba(255,210,235,.65);text-shadow:0 0 12px rgba(255,128,201,.7)}
+
+/* AI/chat. */
+:root[data-theme="mermaid"] .ai-fab{background:linear-gradient(145deg,#ffe1ef,#b8f3f3)!important;color:#5e3c67!important;border:2px solid rgba(255,255,255,.8)!important;box-shadow:0 10px 28px rgba(255,145,210,.35)!important}
+:root[data-theme="mermaid"] .chat-panel{background:rgba(255,250,254,.95)!important;color:#30415b!important;border:1px solid rgba(255,255,255,.72)!important;border-radius:24px!important}
+:root[data-theme="mermaid"] .chat-head{background:linear-gradient(135deg,#ffd8ec,#c7f5f5)!important;color:#563d61!important}
+:root[data-theme="mermaid"] .chat-body{background:linear-gradient(180deg,#fff9fc,#eefcff)!important}
+:root[data-theme="mermaid"] .chat-compose{background:#fff!important;border-top-color:#ecd9e9!important}
+
+/* Keep decorative layer behind all controls and readable content. */
+:root[data-theme="mermaid"] .content-view,
+:root[data-theme="mermaid"] .topbar,
+:root[data-theme="mermaid"] .intro-copy,
+:root[data-theme="mermaid"] .folder-scene,
+:root[data-theme="mermaid"] .page-footer{z-index:1}
+
+@media (max-width:600px){
+  :root[data-theme="mermaid"] .sea-fish{font-size:20px}.fish3{font-size:18px}.sea-jelly{font-size:30px}.sea-sponge{transform:scale(.72)}.sea-coral{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  :root[data-theme="mermaid"] body::before,.sea-fish,.sea-jelly,.sea-sponge,.sea-coral,.mermaid-bubbles{animation:none!important}
+}
+
+
+/* =========================================================
+   MERMAID ROMANCE — FULL OVERRIDE FOR THE UPLOADED UI
+   This block intentionally comes last to override the legacy
+   paper/cream dashboard styles without changing app logic.
+   ========================================================= */
+
+:root[data-theme="mermaid"]{
+  --mr-bg:#071f3a;
+  --mr-deep:#0b3153;
+  --mr-aqua:#8cecf2;
+  --mr-blue:#77c9f2;
+  --mr-pink:#ff9ed2;
+  --mr-purple:#c7b5ff;
+  --mr-cream:#fff9fc;
+  --mr-ink:#29415d;
+  --mr-glass:rgba(255,250,254,.88);
+}
+
+:root[data-theme="mermaid"] body{
+  font-family:'Mali',Tahoma,sans-serif!important;
+  color:#effbff!important;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(255,170,220,.20),transparent 24%),
+    radial-gradient(circle at 90% 18%,rgba(125,235,245,.18),transparent 26%),
+    radial-gradient(circle at 55% 100%,rgba(167,128,255,.18),transparent 30%),
+    linear-gradient(180deg,#071d38 0%,#0a3c5c 52%,#112d5b 100%)!important;
+}
+:root[data-theme="mermaid"] h1,:root[data-theme="mermaid"] h2,
+:root[data-theme="mermaid"] h3,:root[data-theme="mermaid"] h4,
+:root[data-theme="mermaid"] h5,:root[data-theme="mermaid"] h6,
+:root[data-theme="mermaid"] b,:root[data-theme="mermaid"] strong{
+  font-family:'Itim','Mali',sans-serif!important;font-weight:500!important;
+}
+:root[data-theme="mermaid"] button,
+:root[data-theme="mermaid"] input,
+:root[data-theme="mermaid"] select,
+:root[data-theme="mermaid"] textarea{font-family:'Mali',Tahoma,sans-serif!important}
+
+:root[data-theme="mermaid"] .app-shell{max-width:1500px!important;position:relative;z-index:2}
+:root[data-theme="mermaid"] .topbar{
+  background:rgba(7,31,58,.30)!important;
+  border-bottom:1px solid rgba(255,255,255,.16)!important;
+  backdrop-filter:blur(14px)!important;
+}
+:root[data-theme="mermaid"] .brand{color:#fff!important}
+:root[data-theme="mermaid"] .brand small{color:#d7f8ff!important}
+:root[data-theme="mermaid"] .top-status{color:#d8f8ff!important}
+:root[data-theme="mermaid"] .account-link,
+:root[data-theme="mermaid"] .top-settings-button{
+  background:linear-gradient(135deg,#ffd7ec,#b9f3f4)!important;
+  color:#543d64!important;border:1px solid rgba(255,255,255,.75)!important;
+  border-radius:999px!important;box-shadow:0 7px 18px rgba(255,142,205,.2)!important;
+}
+:root[data-theme="mermaid"] .top-settings-button{border:0!important;padding:7px 8px!important}
+
+:root[data-theme="mermaid"] .content-view,
+:root[data-theme="mermaid"] .home-view{position:relative;z-index:2}
+:root[data-theme="mermaid"] .view-heading h2,
+:root[data-theme="mermaid"] .intro-copy h1{color:#fff!important}
+:root[data-theme="mermaid"] .view-heading p,
+:root[data-theme="mermaid"] .intro-copy p,
+:root[data-theme="mermaid"] .empty-note{color:#c8e6ef!important}
+:root[data-theme="mermaid"] .eyebrow,
+:root[data-theme="mermaid"] .card-kicker{color:#ffc6e8!important}
+
+:root[data-theme="mermaid"] .back-button{
+  background:linear-gradient(135deg,#ffd7ec,#bdf3f5)!important;color:#553b62!important;
+  border:1px solid rgba(255,255,255,.75)!important;border-radius:999px!important;
+}
+:root[data-theme="mermaid"] .view-nav{
+  background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.16)!important;
+  border-radius:20px!important;padding:7px!important;backdrop-filter:blur(10px);
+}
+:root[data-theme="mermaid"] .view-nav button,
+:root[data-theme="mermaid"] .view-tools button,
+:root[data-theme="mermaid"] .ai-summary-button,
+:root[data-theme="mermaid"] .primary-action,
+:root[data-theme="mermaid"] .settings-save,
+:root[data-theme="mermaid"] .provider-button,
+:root[data-theme="mermaid"] .text-action{
+  background:linear-gradient(135deg,#ffd8ec,#bdf4f5)!important;color:#553c64!important;
+  border:1px solid rgba(255,255,255,.72)!important;border-radius:999px!important;
+  box-shadow:0 7px 18px rgba(255,142,205,.18),inset 0 1px #fff!important;
+}
+:root[data-theme="mermaid"] .view-nav button.active,
+:root[data-theme="mermaid"] .view-nav button:hover{
+  background:linear-gradient(135deg,#ffb9dc,#9ee9f2)!important;color:#482f59!important;
+}
+
+/* All inner pages: glass cards, no old beige paper. */
+:root[data-theme="mermaid"] .preview-panel,
+:root[data-theme="mermaid"] .settings-real,
+:root[data-theme="mermaid"] .user-profile-card,
+:root[data-theme="mermaid"] .user-directory,
+:root[data-theme="mermaid"] .permission-note,
+:root[data-theme="mermaid"] .models-panel,
+:root[data-theme="mermaid"] .model-card,
+:root[data-theme="mermaid"] .model-id-card,
+:root[data-theme="mermaid"] .upload-panel,
+:root[data-theme="mermaid"] .analysis-panel,
+:root[data-theme="mermaid"] .table-panel,
+:root[data-theme="mermaid"] .score-card,
+:root[data-theme="mermaid"] .chart-panel,
+:root[data-theme="mermaid"] .cashflow-card,
+:root[data-theme="mermaid"] .expense-filter-panel,
+:root[data-theme="mermaid"] .expense-category,
+:root[data-theme="mermaid"] .ledger-paper,
+:root[data-theme="mermaid"] .ledger-paper-head,
+:root[data-theme="mermaid"] .archive-file-card,
+:root[data-theme="mermaid"] .archive-create-card,
+:root[data-theme="mermaid"] .artifact-model-library,
+:root[data-theme="mermaid"] .imported-file-panel,
+:root[data-theme="mermaid"] .upload-board{
+  background:linear-gradient(145deg,rgba(255,250,254,.94),rgba(220,248,255,.88))!important;
+  color:var(--mr-ink)!important;
+  border:1px solid rgba(255,255,255,.76)!important;
+  border-radius:22px!important;
+  box-shadow:0 15px 38px rgba(3,29,60,.25),inset 0 1px rgba(255,255,255,.9)!important;
+}
+
+/* Archive / file browser. */
+:root[data-theme="mermaid"] .archive-toolbar{
+  background:rgba(255,255,255,.10)!important;border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:20px!important;padding:10px!important;backdrop-filter:blur(12px);
+}
+:root[data-theme="mermaid"] .archive-search,
+:root[data-theme="mermaid"] .archive-risk-filter,
+:root[data-theme="mermaid"] .archive-file-card,
+:root[data-theme="mermaid"] .archive-create-card{
+  border-radius:20px!important;
+}
+:root[data-theme="mermaid"] .archive-search input,
+:root[data-theme="mermaid"] .archive-risk-filter select,
+:root[data-theme="mermaid"] .person-select,
+:root[data-theme="mermaid"] .month-select,
+:root[data-theme="mermaid"] .preview-filter input,
+:root[data-theme="mermaid"] .preview-filter select,
+:root[data-theme="mermaid"] .settings-preview input,
+:root[data-theme="mermaid"] .settings-preview select,
+:root[data-theme="mermaid"] input,
+:root[data-theme="mermaid"] select,
+:root[data-theme="mermaid"] textarea{
+  background:rgba(255,253,255,.95)!important;color:#29415d!important;
+  border:1px solid #e2cde8!important;border-radius:15px!important;
+}
+:root[data-theme="mermaid"] .archive-create-card{
+  background:linear-gradient(145deg,rgba(255,250,254,.97),rgba(210,247,255,.94))!important;
+}
+:root[data-theme="mermaid"] .archive-delete-button,
+:root[data-theme="mermaid"] .archive-rename-button,
+:root[data-theme="mermaid"] .archive-add-button{
+  border-radius:999px!important;
+}
+:root[data-theme="mermaid"] .archive-delete-button{background:linear-gradient(135deg,#ffb5c9,#d88ae8)!important;color:#5b294b!important}
+:root[data-theme="mermaid"] .archive-add-button{background:linear-gradient(135deg,#ffe0ee,#b8f3f5)!important;color:#543d64!important}
+
+/* Overview metrics/charts. */
+:root[data-theme="mermaid"] .overview-metrics article,
+:root[data-theme="mermaid"] .chart-panel{
+  background:linear-gradient(145deg,rgba(255,250,254,.94),rgba(220,248,255,.88))!important;
+  color:#29415d!important;border:1px solid rgba(255,255,255,.72)!important;
+  border-radius:20px!important;box-shadow:0 13px 30px rgba(3,29,60,.22)!important;
+}
+:root[data-theme="mermaid"] .overview-metrics article{border-top:4px solid #ff9ed2!important}
+:root[data-theme="mermaid"] .overview-metrics span,
+:root[data-theme="mermaid"] .overview-metrics small,
+:root[data-theme="mermaid"] .chart-heading>small,
+:root[data-theme="mermaid"] .chart-key{color:#65798c!important}
+:root[data-theme="mermaid"] .overview-metrics b{color:#31536d!important}
+:root[data-theme="mermaid"] .risk-donut:before{background:#f8fbfd!important}
+:root[data-theme="mermaid"] .cashflow-card span,
+:root[data-theme="mermaid"] .cashflow-card small{color:#65798c!important}
+
+/* Tables / transaction page. */
+:root[data-theme="mermaid"] .sample-table,
+:root[data-theme="mermaid"] .ledger-table,
+:root[data-theme="mermaid"] .ledger-table-scroll table{
+  background:rgba(255,251,255,.94)!important;color:#29415d!important;
+  border-radius:18px!important;overflow:hidden;
+}
+:root[data-theme="mermaid"] .sample-table th,
+:root[data-theme="mermaid"] .ledger-table th{
+  background:linear-gradient(135deg,#ffdced,#d5f7fa)!important;color:#5f4b70!important;
+  border-color:#ead8e9!important;
+}
+:root[data-theme="mermaid"] .sample-table td,
+:root[data-theme="mermaid"] .ledger-table td{border-color:#e7dce9!important}
+:root[data-theme="mermaid"] .sample-table tbody tr:hover,
+:root[data-theme="mermaid"] .ledger-table tbody tr:hover{background:#fff0f8!important}
+:root[data-theme="mermaid"] .risk-badge,
+:root[data-theme="mermaid"] .risk-id-badge{border-radius:999px!important}
+
+/* Upload page. */
+:root[data-theme="mermaid"] .drop-zone{
+  background:linear-gradient(145deg,rgba(255,249,254,.96),rgba(219,250,255,.94))!important;
+  border:2px dashed #f0a8d1!important;border-radius:24px!important;color:#39516b!important;
+}
+:root[data-theme="mermaid"] .drop-zone span{color:#df70b1!important}
+:root[data-theme="mermaid"] .upload-steps,
+:root[data-theme="mermaid"] .upload-privacy,
+:root[data-theme="mermaid"] .imported-file{
+  background:rgba(255,250,254,.86)!important;color:#39516b!important;
+  border-color:#e3d4e9!important;border-radius:18px!important;
+}
+
+/* Settings. */
+:root[data-theme="mermaid"] .settings-preview label{color:#536b7e!important}
+:root[data-theme="mermaid"] .settings-preview input,
+:root[data-theme="mermaid"] .settings-preview select{
+  background:rgba(255,255,255,.95)!important;color:#29415d!important;
+}
+
+/* AI model cards. */
+:root[data-theme="mermaid"] .model-grid{gap:16px!important}
+:root[data-theme="mermaid"] .model-card,
+:root[data-theme="mermaid"] .model-id-card{
+  background:linear-gradient(145deg,#fff9fd,#e0f7fb)!important;color:#29415d!important;
+  border:1px solid rgba(255,255,255,.8)!important;border-radius:22px!important;
+}
+:root[data-theme="mermaid"] .model-tag,
+:root[data-theme="mermaid"] .model-status{background:#ffe2f0!important;color:#684968!important;border-radius:999px!important}
+:root[data-theme="mermaid"] .model-use-button{background:linear-gradient(135deg,#ffd7eb,#bdf2f4)!important;color:#573d65!important;border:0!important;border-radius:999px!important;box-shadow:none!important}
+:root[data-theme="mermaid"] .model-metrics>span,
+:root[data-theme="mermaid"] .model-metrics-note{background:#edf9fc!important;color:#66798a!important;border-radius:12px!important}
+
+/* Login. */
+:root[data-theme="mermaid"] .auth-screen{
+  background:
+    radial-gradient(circle at 50% 15%,rgba(255,190,225,.30),transparent 28%),
+    linear-gradient(160deg,#071c35,#0a4964 55%,#4a2e63)!important;
+}
+:root[data-theme="mermaid"] .firebase-login-card,
+:root[data-theme="mermaid"] .login-card{
+  background:linear-gradient(145deg,rgba(255,251,254,.98),rgba(224,249,255,.95))!important;
+  color:#29415d!important;border-radius:30px!important;
+  box-shadow:0 25px 65px rgba(0,0,0,.35),inset 0 1px #fff!important;
+}
+:root[data-theme="mermaid"] .firebase-login-button{border-radius:999px!important}
+:root[data-theme="mermaid"] .firebase-login-message{color:#b35b91!important}
+
+/* Folder home. */
+:root[data-theme="mermaid"] .folder-back{background:linear-gradient(155deg,#8cecf2,#62bde8 48%,#436bb8)!important}
+:root[data-theme="mermaid"] .folder-front{background:linear-gradient(145deg,#6edcf0,#65aee4 55%,#566fc0)!important}
+:root[data-theme="mermaid"] .folder-label{background:linear-gradient(145deg,#fff9fd,#e5f7ff)!important;color:#30425e!important;border-radius:18px!important}
+:root[data-theme="mermaid"] .overview-card{background:linear-gradient(155deg,#fffaff,#f6d9ed)!important}
+:root[data-theme="mermaid"] .ledger-card{background:linear-gradient(155deg,#f5fdff,#dcecf9)!important}
+:root[data-theme="mermaid"] .upload-card{background:linear-gradient(145deg,#e969a4,#aa61d0)!important}
+:root[data-theme="mermaid"] .settings-card{background:linear-gradient(145deg,#f0e9ff,#c7dcf5)!important}
+
+/* Correct the decorative classes generated by app.js. */
+.sea-mermaid,.sea-fish,.sea-jelly,.sea-sponge,.sea-coral,.sea-shell{
+  position:absolute;user-select:none;pointer-events:none;will-change:transform;
+  filter:drop-shadow(0 7px 10px rgba(0,0,0,.22));
+}
+:root[data-theme="mermaid"] .sea-mermaid{display:block;font-size:55px;opacity:.72;z-index:0;animation:mrMermaidSwim 25s linear infinite}
+.mermaid1{top:14%;left:-12%;animation-delay:-2s!important}
+.mermaid2{top:48%;left:-18%;font-size:42px!important;animation-delay:-12s!important}
+.mermaid3{top:76%;left:-10%;font-size:48px!important;animation-delay:-19s!important}
+@keyframes mrMermaidSwim{
+  0%{transform:translateX(-12vw) translateY(0) rotate(-4deg)}
+  25%{transform:translateX(25vw) translateY(-24px) rotate(3deg)}
+  50%{transform:translateX(55vw) translateY(15px) rotate(-2deg)}
+  75%{transform:translateX(82vw) translateY(-18px) rotate(3deg)}
+  100%{transform:translateX(118vw) translateY(4px) rotate(-4deg)}
+}
+.sea-shell{font-size:42px;opacity:.42;animation:mrFloat 7s ease-in-out infinite alternate}
+.shell1{left:12%;bottom:5%}.shell2{right:12%;bottom:16%;font-size:32px;animation-delay:-3s}
+@keyframes mrFloat{to{transform:translateY(-16px) rotate(8deg)}}
+
+/* Glitter layer must sit above content, but never intercept clicks. */
+:root[data-theme="mermaid"] .mermaid-glitter-layer{position:fixed;inset:0;z-index:9999;pointer-events:none}
+:root[data-theme="mermaid"] .glitter-particle{
+  position:fixed;pointer-events:none;color:#fff;text-shadow:0 0 8px #ff8ed0,0 0 18px #8debf3;
+  animation:mrGlitter .85s ease-out forwards;animation-delay:var(--delay);font-size:15px;
+}
+@keyframes mrGlitter{to{transform:translate(var(--dx),var(--dy)) rotate(180deg) scale(.2);opacity:0}}
+
+/* Make the old dashboard blocks unmistakably Mermaid. */
+:root[data-theme="mermaid"] .archive-file-name,
+:root[data-theme="mermaid"] .archive-file-kicker,
+:root[data-theme="mermaid"] .archive-open-hint,
+:root[data-theme="mermaid"] .panel-heading-row,
+:root[data-theme="mermaid"] .ledger-foot,
+:root[data-theme="mermaid"] .case-context{color:#536f82!important}
+:root[data-theme="mermaid"] .archive-file-card.current{outline:2px solid #ff9ed2!important}
+:root[data-theme="mermaid"] .score-modal,
+:root[data-theme="mermaid"] .modal-card{
+  background:linear-gradient(145deg,#fff9fd,#e3f8fb)!important;color:#29415d!important;border:1px solid #fff!important;border-radius:26px!important;
+}
+
+/* Mobile: don't let the old desktop layout create a cream slab. */
+@media(max-width:760px){
+  :root[data-theme="mermaid"] .app-shell{padding:0 4%!important}
+  :root[data-theme="mermaid"] .charts-grid{grid-template-columns:1fr!important}
+  :root[data-theme="mermaid"] .overview-metrics{grid-template-columns:1fr!important}
+  :root[data-theme="mermaid"] .settings-preview{grid-template-columns:1fr!important}
+  :root[data-theme="mermaid"] .sea-mermaid{font-size:34px}
+  :root[data-theme="mermaid"] .sea-fish{font-size:20px}
+  :root[data-theme="mermaid"] .sea-jelly{font-size:28px}
+  :root[data-theme="mermaid"] .sea-coral{font-size:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  :root[data-theme="mermaid"] *{scroll-behavior:auto!important}
+  :root[data-theme="mermaid"] .sea-mermaid,
+  :root[data-theme="mermaid"] .sea-fish,
+  :root[data-theme="mermaid"] .sea-jelly,
+  :root[data-theme="mermaid"] .sea-sponge,
+  :root[data-theme="mermaid"] .sea-coral,
+  :root[data-theme="mermaid"] .sea-shell,
+  :root[data-theme="mermaid"] .mermaid-bubbles{animation:none!important}
+}
+
+/* =========================================================
+   MERMAID · ARCHIVE CARD HIGH-CONTRAST PATCH
+   The legacy archive card uses light/white text. Force every
+   text layer to a readable dark tone on the new pearl card.
+   ========================================================= */
+:root[data-theme="mermaid"] .archive-file-card{
+  background:linear-gradient(145deg,#f9fdff 0%,#dceff7 58%,#cbe8f0 100%)!important;
+  color:#29415d!important;
+  text-shadow:none!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-file-kicker{
+  color:#55728a!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-file-number{
+  color:#526d82!important;
+  background:rgba(255,255,255,.72)!important;
+  border-color:rgba(76,116,139,.28)!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-file-name{
+  color:#25445d!important;
+  text-shadow:none!important;
+  font-weight:600!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-file-stats{
+  border-top-color:rgba(65,101,123,.30)!important;
+  border-bottom-color:rgba(65,101,123,.30)!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-file-stats small{
+  color:#607b8d!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-file-stats strong{
+  color:#29415d!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-risk{
+  color:#3d5b70!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-risk>b{
+  color:#563f62!important;
+  text-shadow:none!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-risk>b small{
+  color:#6d7f8c!important;
+  opacity:1!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-risk>i{
+  border-color:#71909f!important;
+  box-shadow:0 0 6px rgba(255,255,255,.9)!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-open-hint{
+  color:#536f82!important;
+  text-shadow:none!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-open-hint b{
+  color:#8b4d7d!important;
+}
+:root[data-theme="mermaid"] .archive-file-card .archive-tab{
+  background:linear-gradient(135deg,#9ed8ee,#b8e9f1)!important;
+  border-color:rgba(255,255,255,.9)!important;
+}
+
+/* === MERMAID SHELL RISK CARD === */
+:root[data-theme="mermaid"] .risk-id-badge{
+  width:270px!important;
+  min-height:205px!important;
+  padding:16px 18px 12px!important;
+  border:2px solid rgba(103,177,188,.82)!important;
+  border-radius:52% 48% 58% 42% / 45% 42% 58% 55%!important;
+  background:
+    radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.95),transparent 28%),
+    repeating-radial-gradient(ellipse at 50% 105%,rgba(255,157,213,.16) 0 5px,rgba(126,220,229,.12) 6px 10px,transparent 11px 19px),
+    linear-gradient(145deg,#fff7fc 0%,#dff8f5 52%,#c5dff5 100%)!important;
+  box-shadow:0 20px 30px rgba(16,61,86,.30), inset 0 3px 12px rgba(255,255,255,.9), inset 0 -10px 20px rgba(102,190,207,.13)!important;
+  overflow:hidden;
+  transform:rotate(3deg);
+}
+:root[data-theme="mermaid"] .risk-id-badge::before{
+  content:"";
+  position:absolute;
+  inset:8px 10px 9px;
+  border-radius:inherit;
+  pointer-events:none;
+  opacity:.7;
+  background:
+    repeating-radial-gradient(ellipse at 50% 112%, transparent 0 13px, rgba(255,143,207,.28) 14px 15px, transparent 16px 23px);
+  mix-blend-mode:multiply;
+}
+:root[data-theme="mermaid"] .risk-id-badge::after{
+  content:"✦ ｡ﾟ✧ ﾟ｡ ✦";
+  position:absolute;
+  right:18px;
+  bottom:12px;
+  color:rgba(255,132,205,.62);
+  font-size:12px;
+  letter-spacing:3px;
+  pointer-events:none;
+}
+:root[data-theme="mermaid"] .risk-id-badge .badge-clip{
+  top:-9px!important;
+  width:30px!important;
+  height:18px!important;
+  border-color:#78a9b4!important;
+  background:linear-gradient(90deg,#dff7f5,#89bfc9,#efffff)!important;
+  z-index:3;
+}
+:root[data-theme="mermaid"] .risk-id-badge .badge-topline{
+  position:relative;
+  z-index:2;
+  color:#426879!important;
+  border-color:#75aeb8!important;
+}
+:root[data-theme="mermaid"] .risk-id-badge .badge-content,
+:root[data-theme="mermaid"] .risk-id-badge .badge-bottomline{
+  position:relative;
+  z-index:2;
+}
+:root[data-theme="mermaid"] .risk-id-badge .badge-photo{
+  border-color:#fff!important;
+  box-shadow:0 5px 12px rgba(40,94,111,.20)!important;
+  border-radius:8px!important;
+}
+:root[data-theme="mermaid"] .risk-id-badge .badge-score strong{
+  color:#274b62!important;
+  text-shadow:0 1px #fff;
+}
+:root[data-theme="mermaid"] .risk-id-badge .badge-score>small,
+:root[data-theme="mermaid"] .risk-id-badge .badge-bottomline{
+  color:#527384!important;
+}
+:root[data-theme="mermaid"] .risk-id-badge .badge-bottomline{
+  border-top-color:rgba(83,151,166,.35)!important;
+}
+@media(max-width:650px){
+  :root[data-theme="mermaid"] .risk-id-badge{width:225px!important;min-height:174px!important;padding:13px 14px 9px!important}
+  :root[data-theme="mermaid"] .risk-id-badge .badge-photo{height:76px;width:57px}
+  :root[data-theme="mermaid"] .risk-id-badge .badge-score strong{font-size:31px}
+}
+
+/* Fish follow the pointer like a tiny school. */
+:root[data-theme="mermaid"] .mermaid-fish{
+  will-change:transform;
+  transition:filter .25s ease;
+  filter:drop-shadow(0 5px 7px rgba(0,0,0,.16));
+}
+:root[data-theme="mermaid"] .mermaid-fish:hover{filter:drop-shadow(0 5px 10px rgba(255,151,215,.5)) brightness(1.12)}
