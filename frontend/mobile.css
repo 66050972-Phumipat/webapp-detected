@@ -142,3 +142,9 @@
 @media (prefers-reduced-motion:reduce){
   .floating-card,.folder-front,.folder-label{transition:none!important;animation:none!important}
 }
+
+/* Home card position swap: Statement on top-left, Case Summary on bottom-left. */
+@media (max-width: 768px){
+  .overview-card{left:3%!important;top:490px!important;bottom:auto!important}
+  .upload-card{left:3%!important;top:310px!important;bottom:auto!important}
+}

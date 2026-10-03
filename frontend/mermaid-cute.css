@@ -672,3 +672,9 @@
   filter:drop-shadow(0 5px 7px rgba(0,0,0,.16));
 }
 :root[data-theme="mermaid"] .mermaid-fish:hover{filter:drop-shadow(0 5px 10px rgba(255,151,215,.5)) brightness(1.12)}
+
+/* Home card position swap: Statement on top-left, Case Summary on bottom-left. */
+@media (min-width: 769px){
+  .overview-card{left:13%!important;right:auto!important;top:auto!important;bottom:4%!important}
+  .upload-card{left:2%!important;right:auto!important;top:14%!important;bottom:auto!important}
+}

@@ -7,3 +7,9 @@ numpy
 scikit-learn
 joblib
 openai
+xgboost
+pdfplumber
+pdfminer.six
+pillow
+cryptography
+PyYAML
