@@ -153,3 +153,189 @@
   .overview-card{left:4%!important;top:auto!important;bottom:4%!important;}
   .upload-card{left:-1%!important;top:13%!important;bottom:auto!important;}
 }
+
+/* =========================================================
+   v18 · PHONE HOME LAYOUT
+   Keep the desktop 3D aesthetic, but prevent the mobile home
+   cards from overlapping the folder and each other.
+   ========================================================= */
+@media (max-width:760px){
+  .home-view{padding-bottom:0!important}
+  .intro-copy{padding-top:18px!important;padding-bottom:7px!important}
+  .intro-copy h1{font-size:29px!important;line-height:1.15!important}
+  .intro-copy p{margin:5px 0 0!important}
+
+  .folder-scene{
+    position:relative!important;
+    width:100%!important;
+    height:700px!important;
+    margin:8px auto 0!important;
+    overflow:hidden!important;
+    perspective:900px!important;
+    perspective-origin:50% 32%!important;
+    isolation:isolate!important;
+  }
+
+  /* Hide side peek folders on a narrow screen; arrows remain the case switcher. */
+  .folder-peek{display:none!important}
+
+  /* Main folder: centered, compact, with a subtle 3D tilt. */
+  .folder-front{
+    display:block!important;
+    position:absolute!important;
+    left:4%!important;
+    top:38px!important;
+    width:92%!important;
+    height:205px!important;
+    z-index:1!important;
+    clip-path:none!important;
+    border-radius:28px!important;
+    transform:perspective(900px) rotateX(2deg) rotateY(-2deg)!important;
+    transform-origin:center center!important;
+    background:linear-gradient(145deg,#bfe8f4 0%,#8fd1e9 50%,#65afd7 100%)!important;
+    box-shadow:0 18px 34px #061e3c66,inset 0 2px #ffffffaa,inset 0 -9px #4e9bc5!important;
+  }
+  .folder-label{
+    left:6%!important;top:13%!important;width:88%!important;min-height:145px!important;
+    padding:17px 15px!important;
+    border-radius:19px!important;
+    transform:translateZ(18px)!important;
+    background:linear-gradient(145deg,#fffaff,#e8faff)!important;
+    box-shadow:0 10px 20px #31587833!important;
+  }
+  .folder-label strong{font-size:25px!important;line-height:1.08!important;margin:7px 0!important}
+  .folder-label small{font-size:7px!important}
+  .folder-label>span{font-size:10px!important}
+
+  .folder-arrow{
+    top:258px!important;
+    bottom:auto!important;
+    width:46px!important;height:46px!important;
+    z-index:20!important;
+    font-size:30px!important;
+    background:#162b39ee!important;
+    box-shadow:0 6px 15px #0005!important;
+  }
+  .folder-arrow-prev{left:calc(50% - 55px)!important}
+  .folder-arrow-next{right:calc(50% - 55px)!important}
+
+  /* Four action cards: 2 × 2, with clear spacing below the folder. */
+  .floating-card{
+    position:absolute!important;
+    width:46%!important;
+    height:154px!important;
+    min-height:154px!important;
+    padding:13px!important;
+    border-radius:20px!important;
+    z-index:12!important;
+    transform:perspective(700px) rotateY(0deg) translateZ(0)!important;
+    box-shadow:0 12px 25px #06203c55!important;
+  }
+  .floating-card:hover,.floating-card:focus-visible{
+    transform:perspective(700px) translateY(-4px) translateZ(5px)!important;
+  }
+  .upload-card{
+    left:2%!important;right:auto!important;top:320px!important;bottom:auto!important;
+  }
+  .ledger-card{
+    left:auto!important;right:2%!important;top:320px!important;bottom:auto!important;
+  }
+  .overview-card{
+    left:2%!important;right:auto!important;top:492px!important;bottom:auto!important;
+  }
+  .settings-card{
+    left:auto!important;right:2%!important;top:492px!important;bottom:auto!important;
+  }
+  .floating-card b{font-size:16px!important;line-height:1.3!important}
+  .floating-card small{font-size:9px!important}
+  .card-kicker{font-size:7px!important}
+  .card-icon,.upload-icon,.settings-icon{margin:4px 0!important}
+  .ledger-mini{height:39px!important}
+}
+
+@media (max-width:420px){
+  .folder-scene{height:690px!important}
+  .folder-front{top:34px!important;height:198px!important}
+  .folder-label{min-height:140px!important}
+  .folder-label strong{font-size:23px!important}
+  .folder-arrow{top:246px!important}
+  .floating-card{width:47%!important;height:150px!important;min-height:150px!important;padding:12px!important}
+  .upload-card,.ledger-card{top:305px!important}
+  .overview-card,.settings-card{top:472px!important}
+}
+
+@media (max-width:360px){
+  .folder-scene{height:670px!important}
+  .folder-front{top:30px!important;height:188px!important}
+  .folder-label{min-height:132px!important;padding:14px!important}
+  .folder-label strong{font-size:21px!important}
+  .folder-arrow{top:235px!important;width:42px!important;height:42px!important}
+  .floating-card{height:144px!important;min-height:144px!important}
+  .upload-card,.ledger-card{top:292px!important}
+  .overview-card,.settings-card{top:452px!important}
+  .floating-card b{font-size:14px!important}
+}
+
+/* v19 · mobile folder hero: keep the real file-folder silhouette instead of a rounded card */
+@media (max-width:760px){
+  .folder-scene{perspective:1100px;transform-style:preserve-3d}
+  .folder-back{
+    display:block!important;
+    left:4%!important;top:74px!important;width:92%!important;height:205px!important;
+    z-index:0!important;
+    clip-path:polygon(0 13%,11% 13%,20% 0,49% 0,57% 13%,100% 13%,100% 100%,0 100%)!important;
+    border-radius:14px 18px 24px 24px!important;
+    background:linear-gradient(155deg,#9edff0,#6fb8da 48%,#4f91bf)!important;
+    box-shadow:inset 0 2px #e4f8ffcc,inset 0 -11px #3979a7,0 18px 30px #061e3c66!important;
+    transform:translateZ(0)!important;
+  }
+  .folder-front{
+    display:block!important;
+    left:3%!important;top:92px!important;width:94%!important;height:192px!important;
+    z-index:1!important;
+    clip-path:polygon(0 12%,13% 12%,22% 0,49% 0,57% 12%,100% 12%,98% 100%,2% 100%)!important;
+    border-radius:12px 17px 22px 22px!important;
+    background:linear-gradient(145deg,#79c7e2,#59a8cf 55%,#458db7)!important;
+    box-shadow:inset 0 2px #eafaffaa,inset 0 -9px #3d7fa9,0 11px 20px #173f5a55!important;
+    transform:perspective(1000px) rotateX(1deg)!important;
+  }
+  .folder-tab{
+    display:block!important;
+    right:auto!important;left:22%!important;top:3px!important;
+    writing-mode:horizontal-tb!important;
+    padding:5px 11px 7px!important;
+    border-radius:7px 9px 0 0!important;
+    background:linear-gradient(#c9e9f3,#acd9e8)!important;
+    color:#41657b!important;
+    font:7px 'Special Elite',serif!important;
+    letter-spacing:1px!important;
+    box-shadow:inset 0 1px #fff9,0 -1px #79b5cc!important;
+    transform:none!important;
+  }
+  .folder-stamp,.folder-lines,.folder-index{display:none!important}
+  .folder-label{
+    left:8%!important;top:28px!important;width:84%!important;min-height:130px!important;
+    padding:16px 15px!important;
+    border-radius:16px!important;
+    background:linear-gradient(145deg,#fffaff,#e9f8fc)!important;
+    color:#29415d!important;
+    box-shadow:0 8px 18px #31587833,0 0 0 1px #ffffff99!important;
+    transform:rotate(-1deg)!important;
+    z-index:2!important;
+  }
+  .folder-label small{font-size:7px!important;letter-spacing:1px!important;color:#66839a!important}
+  .folder-label strong{font-family:'Itim','Mali',sans-serif!important;font-size:25px!important;line-height:1!important;letter-spacing:.5px!important;color:#29415d!important;margin:8px 0!important}
+  .folder-label>span{font:9px 'Mali',sans-serif!important;color:#688097!important}
+}
+@media (max-width:520px){
+  .folder-back{left:2%!important;width:96%!important;top:70px!important;height:198px!important}
+  .folder-front{left:1%!important;width:98%!important;top:87px!important;height:188px!important}
+  .folder-label{left:7%!important;top:27px!important;width:86%!important;min-height:126px!important}
+  .folder-label strong{font-size:23px!important}
+}
+@media (max-width:380px){
+  .folder-back{top:68px!important;height:190px!important}
+  .folder-front{top:84px!important;height:181px!important}
+  .folder-label{top:25px!important;min-height:120px!important}
+  .folder-label strong{font-size:20px!important}
+}
