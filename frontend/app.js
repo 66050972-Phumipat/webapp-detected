@@ -1,12 +1,43 @@
-const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc = value => String(value ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
 const money = value => new Intl.NumberFormat('th-TH', { maximumFractionDigits: 0 }).format(Math.abs(Number(value) || 0)) + ' ฿';
+function parseStatementDate(value) {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  const text = String(value ?? '').trim();
+  if (!text) return null;
+  const iso = text.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
+  if (iso) {
+    let year = Number(iso[1]);
+    if (year > 2400) year -= 543;
+    const d = new Date(year, Number(iso[2]) - 1, Number(iso[3]));
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+  const dmy = text.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{2,4})/);
+  if (dmy) {
+    let year = Number(dmy[3]);
+    if (year < 100) year += 2000;
+    if (year > 2400) year -= 543;
+    const d = new Date(year, Number(dmy[2]) - 1, Number(dmy[1]));
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+  const parsed = new Date(text);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+function monthFromFileName(fileName) {
+  const name = String(fileName ?? '');
+  let m = name.match(/(20\d{2})[-_.](0?[1-9]|1[0-2])(?:[-_.]|\D|$)/);
+  if (m) return `${m[1]}-${String(Number(m[2])).padStart(2,'0')}`;
+  m = name.match(/(?:^|\D)(0?[1-9]|1[0-2])[-_.](20\d{2})(?:\D|$)/);
+  if (m) return `${m[2]}-${String(Number(m[1])).padStart(2,'0')}`;
+  return '';
+}
 function normalizeRow(row) {
-  const rawDate = row.transaction_date || row.rawDate || '';
-  const d = new Date(rawDate);
-  const date = Number.isNaN(d.getTime()) ? (row.date || 'ไม่ระบุ') : d.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: '2-digit' });
+  const rawDate = row.transaction_date || row.rawDate || row.date || '';
+  const d = parseStatementDate(rawDate);
+  const fileMonth = monthFromFileName(row.sourceFileName);
+  const monthKey = d ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}` : fileMonth;
+  const date = d ? d.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: '2-digit' }) : (row.date || 'ไม่ระบุ');
   const factors = row.score_factors || {};
-  const parts=String(row.date||'').split('-'); const fallbackMonth=parts.length===3?`20${parts[2]}-${parts[1]}`:'';
-  return { ...row, ownerName:row.owner_name||row.ownerName||'บุคคลที่ 1', rawDate, date, monthKey: Number.isNaN(d.getTime()) ? fallbackMonth : `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`, type: row.transaction_type || row.type || 'ไม่ระบุ', amount: Number(row.amount || 0), score: Number(row.risk_score ?? row.score ?? 0), level: row.risk_level || row.level || 'NORMAL', reasons: row.reasons || 'ไม่พบสัญญาณเด่น', factors: Array.isArray(row.factors) ? row.factors : [['Machine Learning', Number(row.ml_contribution || 0)], ['ยอดเงินเทียบค่ามัธยฐาน', Number(factors.amount_deviation || 0)], ['เวลาทำรายการ', Number(factors.night_activity || 0)], ['ธุรกรรมต่างประเทศ', Number(factors.international || 0)]] };
+  return { ...row, ownerName:row.owner_name||row.ownerName||'บุคคลที่ 1', rawDate, date, monthKey, type: row.transaction_type || row.type || 'ไม่ระบุ', amount: Number(row.amount || 0), score: Number(row.risk_score ?? row.score ?? 0), level: row.risk_level || row.level || 'NORMAL', reasons: row.reasons || 'ไม่พบสัญญาณเด่น', factors: Array.isArray(row.factors) ? row.factors : [['Machine Learning', Number(row.ml_contribution || 0)], ['ยอดเงินเทียบค่ามัธยฐาน', Number(factors.amount_deviation || 0)], ['เวลาทำรายการ', Number(factors.night_activity || 0)], ['ธุรกรรมต่างประเทศ', Number(factors.international || 0)]] };
 }
 function initialCases() {
   try {
@@ -222,8 +253,15 @@ const activeCase = () => cases.find(c => c.id === activeCaseId) || cases[0];
 const saveCases = () => { try { localStorage.setItem('detected-cases-v1', JSON.stringify(cases)); } catch { toast('พื้นที่จัดเก็บข้อมูลเต็ม แฟ้มนี้ยังเปิดได้ในหน้านี้'); } };
 function updateActiveRows(rows, source) { sampleRows = rows.map(normalizeRow); activeCase().rows = sampleRows; activeCase().source = source || activeCase().source; saveCases(); renderCaseCarousel(); }
 function monthOptions() {
-  const months = [...new Set(sampleRows.map(r => r.monthKey).filter(Boolean))].sort().reverse();
-  return `<select class="month-select" id="month-filter"><option value="all">ทุกเดือน</option>${months.map(m=>{const [y,mo]=m.split('-');return `<option value="${esc(m)}" ${state.month===m?'selected':''}>${new Date(Number(y),Number(mo)-1,1).toLocaleDateString('th-TH',{month:'long',year:'numeric'})}</option>`}).join('')}</select>`;
+  const monthMap = new Map();
+  sampleRows.forEach(row => {
+    if (!row.monthKey) return;
+    if (!monthMap.has(row.monthKey)) monthMap.set(row.monthKey, new Set());
+    if (row.sourceFileName) monthMap.get(row.monthKey).add(row.sourceFileName);
+  });
+  const months = [...monthMap.entries()].sort(([a],[b]) => b.localeCompare(a));
+  if (state.month !== 'all' && !monthMap.has(state.month)) state.month = 'all';
+  return `<select class="month-select" id="month-filter"><option value="all">ทุกเดือน</option>${months.map(([m,files])=>{const [y,mo]=m.split('-');const label=new Date(Number(y),Number(mo)-1,1).toLocaleDateString('th-TH',{month:'long',year:'numeric'});const fileList=[...files];const title=fileList.length===1?` · ${fileList[0]}`:fileList.length>1?` · ${fileList.length} ไฟล์`:'';return `<option value="${esc(m)}" ${state.month===m?'selected':''} title="${esc(fileList.join('\n'))}">${esc(label+title)}</option>`}).join('')}</select>`;
 }
 function filteredRows() { return sampleRows.filter(r => (state.month==='all' || r.monthKey===state.month) && (state.person==='all' || r.ownerName===state.person)); }
 function personOptions(){const names=[...new Set(sampleRows.map(r=>r.ownerName).filter(Boolean))];return `<select class="person-select" id="person-filter" aria-label="กรองเจ้าของข้อมูล"><option value="all" ${state.person==='all'?'selected':''}>ทุกคน (${names.length})</option>${names.map(n=>`<option value="${esc(n)}" ${state.person===n?'selected':''}>${esc(n)}</option>`).join('')}</select>`;}
