@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;500;600;700&display=swap');
+/* =========================================================
+   DETECTED · BUNNY CANDY THEME  (data-theme="bunny")
+   พาสเทลหวานๆ · สติกเกอร์ · ปุ่มก้อนเมฆ · โครงสร้างใหม่
+   โหลดหลังไฟล์ CSS อื่นทั้งหมด
+   ========================================================= */
+:root[data-theme="bunny"]{
+  --bn-pink:#ff8fc0; --bn-pink2:#ffd1e6; --bn-pink3:#fff0f7;
+  --bn-mint:#bff2df; --bn-sky:#cdeaff; --bn-lav:#e0d2ff;
+  --bn-butter:#fff0a8; --bn-peach:#ffd9c4;
+  --bn-ink:#5a3f5e; --bn-ink2:#8d7392; --bn-card:#fffafc;
+  --bn-shadow:0 6px 0 #ffd1e6,0 16px 30px rgba(255,143,192,.28);
+  font-family:'Mali',Tahoma,sans-serif;
+}
+
+/* ---------- พื้นหลัง ---------- */
+:root[data-theme="bunny"] body{
+  color:var(--bn-ink);
+  font-family:'Mali',Tahoma,sans-serif;
+  background:
+    radial-gradient(circle,#fff 0 3px,transparent 4px) 0 0/46px 46px,
+    radial-gradient(circle,#ffe3f0 0 3px,transparent 4px) 23px 23px/46px 46px,
+    linear-gradient(160deg,#fff0f7 0%,#f1ecff 45%,#e4f6ff 100%);
+  background-attachment:fixed;
+}
+:root[data-theme="bunny"] button,:root[data-theme="bunny"] input,
+:root[data-theme="bunny"] select,:root[data-theme="bunny"] textarea,
+:root[data-theme="bunny"] table{font-family:'Mali',Tahoma,sans-serif}
+:root[data-theme="bunny"] h1,:root[data-theme="bunny"] h2,:root[data-theme="bunny"] h3,
+:root[data-theme="bunny"] h4,:root[data-theme="bunny"] b,:root[data-theme="bunny"] strong{
+  font-family:'Itim','Mali',sans-serif;font-weight:400;
+}
+:root[data-theme="bunny"] .app-shell{position:relative;z-index:2;overflow:visible}
+:root[data-theme="bunny"] .eyebrow,:root[data-theme="bunny"] .card-kicker,
+:root[data-theme="bunny"] .folder-index,:root[data-theme="bunny"] .page-footer,
+:root[data-theme="bunny"] .case-context{font-family:'Itim','Mali',sans-serif!important;color:var(--bn-pink)!important;letter-spacing:.8px}
+
+/* ---------- Topbar เป็นแคปซูลลอย ---------- */
+:root[data-theme="bunny"] .topbar{
+  height:66px!important;margin:14px 0 6px;padding:0 18px!important;
+  background:rgba(255,255,255,.85)!important;backdrop-filter:blur(10px);
+  border:3px solid #fff!important;border-radius:999px;
+  box-shadow:0 5px 0 var(--bn-pink2),0 12px 26px rgba(255,143,192,.25);
+}
+:root[data-theme="bunny"] .brand{color:var(--bn-ink)}
+:root[data-theme="bunny"] .brand-mark{
+  border:0;border-radius:50%;transform:none;color:#fff;font-family:'Itim',sans-serif;
+  background:linear-gradient(145deg,#ff9ccb,#ffb98a);box-shadow:0 3px 0 #e56aa3;
+}
+:root[data-theme="bunny"] .brand b{font-family:'Itim',sans-serif;color:var(--bn-ink);letter-spacing:1.5px}
+:root[data-theme="bunny"] .brand small,:root[data-theme="bunny"] .top-status,
+:root[data-theme="bunny"] .account-user-label{color:var(--bn-ink2)}
+:root[data-theme="bunny"] .top-status>i{background:#7fdcb5;box-shadow:0 0 0 4px #7fdcb533}
+:root[data-theme="bunny"] .top-settings-button{color:var(--bn-pink)}
+
+/* ---------- หน้าแรก ---------- */
+:root[data-theme="bunny"] .intro-copy h1{color:var(--bn-ink);font-size:clamp(28px,4vw,42px)}
+:root[data-theme="bunny"] .intro-copy h1:before{content:"🐰 "}
+:root[data-theme="bunny"] .intro-copy h1:after{content:" 🍓"}
+:root[data-theme="bunny"] .intro-copy p{color:var(--bn-ink2)}
+
+:root[data-theme="bunny"] .case-carousel-label{color:var(--bn-ink2)}
+:root[data-theme="bunny"] .case-carousel-label small{color:var(--bn-ink2)}
+
+:root[data-theme="bunny"] .folder-back{
+  background:linear-gradient(155deg,#ffc2dd,#ff9fc8 55%,#f783b5)!important;
+  box-shadow:inset 0 3px #fff8,inset 0 -14px #e56aa3,0 22px 30px rgba(255,143,192,.35)!important;filter:none;
+}
+:root[data-theme="bunny"] .folder-front{
+  background:linear-gradient(145deg,#ffd6e8,#ffb3d4 55%,#ff9ac4)!important;
+  box-shadow:inset 0 3px #fffa,inset 0 -11px #f07db1!important;
+}
+:root[data-theme="bunny"] .folder-tab{background:#fff6c9;color:#a07a2b}
+:root[data-theme="bunny"] .folder-stamp{border-color:#ff6fa5;color:#ff6fa5;border-radius:14px;background:#fff8}
+:root[data-theme="bunny"] .folder-index{color:#fff!important}
+:root[data-theme="bunny"] .folder-label{
+  background:#fffdf5!important;color:var(--bn-ink)!important;border-radius:22px;
+  border:3px dashed #ffb3d4;box-shadow:0 8px 0 #ffd9e8,0 14px 24px rgba(200,90,140,.25)!important;
+}
+:root[data-theme="bunny"] .folder-label strong{font-family:'Itim',sans-serif!important;color:var(--bn-ink)!important;letter-spacing:.5px}
+:root[data-theme="bunny"] .folder-label small,:root[data-theme="bunny"] .folder-label>span{font-family:'Mali',sans-serif!important;color:var(--bn-ink2)!important}
+:root[data-theme="bunny"] .folder-lines i{background:#fff9}
+
+:root[data-theme="bunny"] .folder-arrow{
+  background:#fff!important;color:var(--bn-pink)!important;border:3px solid var(--bn-pink2)!important;
+  box-shadow:0 4px 0 var(--bn-pink2)!important;
+}
+:root[data-theme="bunny"] .folder-arrow:hover{background:var(--bn-pink3)!important}
+:root[data-theme="bunny"] .folder-peek{
+  background:linear-gradient(145deg,#e6d9ff,#cdbbff 62%,#b9a3f5)!important;border-color:#fff;color:#5a3f7e;
+  box-shadow:inset 0 2px #fff9,inset 0 -10px #a68ae8!important;
+}
+:root[data-theme="bunny"] .folder-peek small{color:#fff}
+:root[data-theme="bunny"] .folder-peek b{color:#4b3470}
+:root[data-theme="bunny"] .folder-peek.new-case-peek{background:linear-gradient(145deg,#d3f6e8,#b0ebd3)!important}
+
+/* การ์ดเมนู = สติกเกอร์ */
+:root[data-theme="bunny"] .floating-card{
+  color:var(--bn-ink)!important;border:4px solid #fff!important;border-radius:28px!important;
+  box-shadow:0 7px 0 rgba(255,143,192,.35),0 16px 26px rgba(120,80,140,.22)!important;
+}
+:root[data-theme="bunny"] .floating-card:hover{box-shadow:0 10px 0 rgba(255,143,192,.4),0 22px 32px rgba(120,80,140,.28)!important}
+:root[data-theme="bunny"] .floating-card:after{display:none}
+:root[data-theme="bunny"] .card-pin{
+  background:none!important;box-shadow:none!important;width:auto;height:auto;font-size:18px;line-height:1;top:-12px;
+}
+:root[data-theme="bunny"] .card-pin:after{content:"💖"}
+:root[data-theme="bunny"] .floating-card b{font-family:'Itim',sans-serif!important;color:var(--bn-ink)!important}
+:root[data-theme="bunny"] .floating-card small{color:var(--bn-ink2)!important;opacity:1}
+:root[data-theme="bunny"] .card-arrow{color:var(--bn-pink);opacity:1}
+:root[data-theme="bunny"] .upload-card{background:linear-gradient(145deg,#ffc3df,#ff9fc8)!important}
+:root[data-theme="bunny"] .upload-card .card-kicker,:root[data-theme="bunny"] .upload-card small{color:#7a3a62!important}
+:root[data-theme="bunny"] .upload-icon,:root[data-theme="bunny"] .settings-icon,:root[data-theme="bunny"] .card-icon{
+  background:#fff!important;color:var(--bn-pink)!important;border-radius:50%;
+}
+:root[data-theme="bunny"] .overview-card{background:linear-gradient(145deg,#fff6c9,#ffe79a)!important}
+:root[data-theme="bunny"] .ledger-card{background:linear-gradient(145deg,#d4f2ff,#b7e2fb)!important}
+:root[data-theme="bunny"] .settings-card{background:linear-gradient(145deg,#e6dcff,#cfc0fb)!important}
+:root[data-theme="bunny"] .ledger-mini{color:var(--bn-ink);border-color:#fff}
+:root[data-theme="bunny"] .ledger-mini i{background:#fff9}
+
+:root[data-theme="bunny"] .page-footer{border-top:3px dotted var(--bn-pink2);color:var(--bn-ink2)}
+
+/* ---------- หน้าย่อย ---------- */
+:root[data-theme="bunny"] .view-heading h2{color:var(--bn-ink);font-size:30px}
+:root[data-theme="bunny"] .view-heading h2:before{content:"🌸 "}
+:root[data-theme="bunny"] .view-heading p,:root[data-theme="bunny"] .empty-note,
+:root[data-theme="bunny"] .loading-note{color:var(--bn-ink2)!important}
+
+:root[data-theme="bunny"] .back-button{
+  background:#fff!important;color:var(--bn-ink)!important;border:3px solid var(--bn-pink2)!important;
+  border-radius:999px!important;box-shadow:0 4px 0 var(--bn-pink2)!important;
+}
+:root[data-theme="bunny"] .view-nav{
+  background:rgba(255,255,255,.8)!important;border:3px solid #fff!important;border-radius:999px!important;
+  padding:6px!important;box-shadow:0 5px 0 var(--bn-pink2);backdrop-filter:blur(8px);
+}
+:root[data-theme="bunny"] .view-nav button{
+  background:transparent!important;color:var(--bn-ink2)!important;border:0!important;border-radius:999px!important;box-shadow:none!important;
+}
+:root[data-theme="bunny"] .view-nav button.active,:root[data-theme="bunny"] .view-nav button:hover{
+  background:linear-gradient(135deg,#ff9ccb,#ffb98a)!important;color:#fff!important;box-shadow:0 3px 0 #e56aa3!important;
+}
+
+/* การ์ดทั่วไป */
+:root[data-theme="bunny"] .preview-panel,:root[data-theme="bunny"] .settings-real,
+:root[data-theme="bunny"] .user-profile-card,:root[data-theme="bunny"] .user-directory,
+:root[data-theme="bunny"] .permission-note,:root[data-theme="bunny"] .login-card,
+:root[data-theme="bunny"] .upload-board,:root[data-theme="bunny"] .imported-file-panel,
+:root[data-theme="bunny"] .ledger-paper,:root[data-theme="bunny"] .chart-panel,
+:root[data-theme="bunny"] .cashflow-card,:root[data-theme="bunny"] .overview-metrics article,
+:root[data-theme="bunny"] .expense-filter-panel,:root[data-theme="bunny"] .score-card,
+:root[data-theme="bunny"] .model-id-card,:root[data-theme="bunny"] .ai-summary-result,
+:root[data-theme="bunny"] .artifact-model-library{
+  background:var(--bn-card)!important;color:var(--bn-ink)!important;
+  border:4px solid #fff!important;border-radius:28px!important;
+  box-shadow:var(--bn-shadow)!important;clip-path:none;
+}
+:root[data-theme="bunny"] .upload-board:before,:root[data-theme="bunny"] .ledger-paper:before{display:none}
+:root[data-theme="bunny"] .upload-folder-tab{background:var(--bn-pink);color:#fff;border-radius:12px 12px 0 0}
+:root[data-theme="bunny"] .preview-panel p,:root[data-theme="bunny"] .upload-privacy,
+:root[data-theme="bunny"] .model-note,:root[data-theme="bunny"] .ledger-foot,
+:root[data-theme="bunny"] .chart-heading>small,:root[data-theme="bunny"] .chart-key,
+:root[data-theme="bunny"] .overview-metrics span,:root[data-theme="bunny"] .overview-metrics small,
+:root[data-theme="bunny"] .cashflow-card span,:root[data-theme="bunny"] .cashflow-card small,
+:root[data-theme="bunny"] .panel-heading-row p{color:var(--bn-ink2)!important}
+:root[data-theme="bunny"] .overview-metrics b,:root[data-theme="bunny"] .risk-donut b{color:var(--bn-ink)!important;font-family:'Itim',sans-serif}
+:root[data-theme="bunny"] .overview-metrics article{border-left:0!important;border-top:8px solid var(--bn-mint)!important}
+:root[data-theme="bunny"] .overview-metrics article:nth-child(2){border-top-color:var(--bn-butter)!important}
+:root[data-theme="bunny"] .overview-metrics article:nth-child(3){border-top-color:var(--bn-pink)!important}
+:root[data-theme="bunny"] .cashflow-card{border-top:8px solid var(--bn-mint)!important}
+:root[data-theme="bunny"] .cashflow-card.expense{border-top-color:var(--bn-pink)!important}
+:root[data-theme="bunny"] .cashflow-card.net{border-top-color:var(--bn-butter)!important}
+
+/* ปก overview ไม่ต้องเป็นแฟ้มเหลือง */
+:root[data-theme="bunny"] .overview-cover{
+  clip-path:none!important;border-radius:32px;border:4px solid #fff;
+  background:linear-gradient(145deg,#ffe1ef,#ffd0e5 60%,#ffc0dc);box-shadow:var(--bn-shadow);
+}
+:root[data-theme="bunny"] .overview-cover:after{display:none}
+:root[data-theme="bunny"] .cover-folder-tab{background:#fff;color:var(--bn-pink);border-radius:10px}
+:root[data-theme="bunny"] .cover-copy,:root[data-theme="bunny"] .cover-copy h3,
+:root[data-theme="bunny"] .cover-copy p,:root[data-theme="bunny"] .cover-kicker{color:var(--bn-ink)!important;font-family:'Itim','Mali',sans-serif}
+:root[data-theme="bunny"] .cover-classified{background:#fff;color:var(--bn-pink);border:2px dashed var(--bn-pink);box-shadow:none;border-radius:12px}
+:root[data-theme="bunny"] .risk-id-badge{
+  border:4px solid #fff!important;border-radius:30px!important;width:250px!important;
+  background:linear-gradient(145deg,#f4fff9,#d3f6e8)!important;box-shadow:0 7px 0 #b0ebd3,0 16px 26px rgba(80,140,120,.25)!important;
+}
+:root[data-theme="bunny"] .risk-id-badge:before,:root[data-theme="bunny"] .risk-id-badge:after{display:none}
+:root[data-theme="bunny"] .risk-id-badge.badge-risk-mid{background:linear-gradient(145deg,#fffbe0,#fff0a8)!important;box-shadow:0 7px 0 #ffe27a,0 16px 26px rgba(160,130,40,.25)!important}
+:root[data-theme="bunny"] .risk-id-badge.badge-risk-high{background:linear-gradient(145deg,#fff0f6,#ffc9de)!important;box-shadow:0 7px 0 #ff9fc3,0 16px 26px rgba(200,80,130,.25)!important}
+:root[data-theme="bunny"] .badge-clip{display:none}
+:root[data-theme="bunny"] .badge-photo{border-radius:50%;width:70px;height:70px;border-color:#fff;background:#fff;color:var(--bn-pink)}
+:root[data-theme="bunny"] .badge-score strong{color:var(--bn-ink)!important}
+
+/* ปุ่ม */
+:root[data-theme="bunny"] .primary-action,:root[data-theme="bunny"] .settings-save,
+:root[data-theme="bunny"] .ai-summary-button,:root[data-theme="bunny"] .provider-button,
+:root[data-theme="bunny"] .model-use-button,:root[data-theme="bunny"] .archive-add-button,
+:root[data-theme="bunny"] .account-link,:root[data-theme="bunny"] .case-actions button,
+:root[data-theme="bunny"] .text-action{
+  background:linear-gradient(135deg,#ff9ccb,#ffb98a)!important;color:#fff!important;
+  border:0!important;border-radius:999px!important;font-family:'Itim','Mali',sans-serif;
+  box-shadow:0 4px 0 #e56aa3!important;text-shadow:0 1px 0 #d95a96;
+}
+:root[data-theme="bunny"] .primary-action:hover:not(:disabled),:root[data-theme="bunny"] .settings-save:hover,
+:root[data-theme="bunny"] .ai-summary-button:hover:not(:disabled),:root[data-theme="bunny"] .case-actions button:hover{
+  transform:translateY(-2px) scale(1.03);filter:brightness(1.05);
+}
+:root[data-theme="bunny"] .primary-action:active,:root[data-theme="bunny"] .settings-save:active{transform:translateY(3px);box-shadow:0 1px 0 #e56aa3!important}
+:root[data-theme="bunny"] .case-actions #delete-case{background:linear-gradient(135deg,#c9b8ff,#a9c6ff)!important;box-shadow:0 4px 0 #8c8de0!important}
+:root[data-theme="bunny"] .model-use-button:disabled{background:var(--bn-mint)!important;color:#3d7a63!important;box-shadow:none!important;text-shadow:none}
+:root[data-theme="bunny"] .delete-file-button{border-radius:999px;background:#fff0f5;color:#d14d80;border-color:#ffb3cf}
+
+/* ฟอร์ม */
+:root[data-theme="bunny"] input,:root[data-theme="bunny"] select,:root[data-theme="bunny"] textarea,
+:root[data-theme="bunny"] .month-select,:root[data-theme="bunny"] .person-select{
+  background:#fff!important;color:var(--bn-ink)!important;border:3px solid var(--bn-pink2)!important;
+  border-radius:18px!important;box-shadow:none!important;
+}
+:root[data-theme="bunny"] input:focus,:root[data-theme="bunny"] select:focus{outline:0;border-color:var(--bn-pink)!important}
+:root[data-theme="bunny"] input::placeholder{color:#c6adc9}
+:root[data-theme="bunny"] .owner-input-row,:root[data-theme="bunny"] .pdf-password-row,
+:root[data-theme="bunny"] .upload-steps,:root[data-theme="bunny"] .imported-file,
+:root[data-theme="bunny"] .ledger-paper .preview-filter,:root[data-theme="bunny"] .case-score-breakdown span,
+:root[data-theme="bunny"] .score-factors,:root[data-theme="bunny"] .detail-grid>div,:root[data-theme="bunny"] .detail-score{
+  background:var(--bn-pink3)!important;color:var(--bn-ink)!important;border:2px dashed var(--bn-pink2)!important;border-radius:20px!important;
+}
+:root[data-theme="bunny"] .sample-banner{background:var(--bn-butter);color:#7a6420;border:0;border-radius:18px}
+:root[data-theme="bunny"] .drop-zone{
+  background:linear-gradient(145deg,#fff5fa,#eef9ff)!important;border:3px dashed var(--bn-pink)!important;
+  border-radius:30px!important;box-shadow:none!important;color:var(--bn-ink)!important;
+}
+:root[data-theme="bunny"] .drop-zone .drop-icon{background:var(--bn-pink2);color:var(--bn-pink)}
+:root[data-theme="bunny"] .drop-zone:hover,:root[data-theme="bunny"] .drop-zone.drag-active{background:#fff0f7!important}
+:root[data-theme="bunny"] .upload-steps .current i{background:var(--bn-pink);color:#fff;border-color:var(--bn-pink)}
+:root[data-theme="bunny"] .file-preview{background:var(--bn-mint);color:#2f6b55;border-left-color:#6fcaa5;border-radius:16px}
+:root[data-theme="bunny"] .upload-error{background:#ffe3ec;color:#b3365f;border-left-color:#ff6fa5;border-radius:14px}
+
+/* ตาราง */
+:root[data-theme="bunny"] .ledger-table-scroll{background:#fff;border:3px solid var(--bn-pink2);border-radius:22px}
+:root[data-theme="bunny"] .sample-table{background:transparent!important;color:var(--bn-ink)!important}
+:root[data-theme="bunny"] .sample-table th{background:var(--bn-pink3)!important;color:var(--bn-pink)!important;border-bottom:3px solid var(--bn-pink2)!important;font-family:'Itim',sans-serif}
+:root[data-theme="bunny"] .sample-table td{border-color:#ffe9f2!important}
+:root[data-theme="bunny"] .sample-table tbody tr:hover,:root[data-theme="bunny"] .ledger-table-scroll tbody tr:hover{background:#fff0f7!important}
+:root[data-theme="bunny"] .preview-list button{background:#fff;border:3px solid var(--bn-pink2);border-radius:20px;color:var(--bn-ink)}
+:root[data-theme="bunny"] .preview-list button:hover{background:var(--bn-pink3)}
+:root[data-theme="bunny"] .risk-badge{border-radius:999px;font-family:'Itim',sans-serif;padding:4px 10px}
+:root[data-theme="bunny"] .risk-high{background:#ffd1e1;color:#c43a6d}
+:root[data-theme="bunny"] .risk-mid{background:#fff0a8;color:#8a6a10}
+:root[data-theme="bunny"] .risk-normal{background:#c9f5e3;color:#2f7a5c}
+:root[data-theme="bunny"] .paper-stamp{border-color:var(--bn-pink);color:var(--bn-pink);border-radius:12px}
+
+/* กราฟ */
+:root[data-theme="bunny"] .risk-donut:before{background:var(--bn-card);box-shadow:none}
+:root[data-theme="bunny"] .bar-income{background:linear-gradient(#bff2df,#6fcaa5)}
+:root[data-theme="bunny"] .bar-expense{background:linear-gradient(#ffc2dd,#ff8fc0)}
+:root[data-theme="bunny"] .month-bars i{border-radius:10px 10px 0 0}
+:root[data-theme="bunny"] .category-chart>div>i{background:#ffe9f2}
+:root[data-theme="bunny"] .category-chart em{background:linear-gradient(90deg,#ffd27a,#ff8fc0)}
+:root[data-theme="bunny"] .income-key{background:#6fcaa5}
+:root[data-theme="bunny"] .expense-key{background:#ff8fc0}
+:root[data-theme="bunny"] .expense-category{background:var(--bn-pink3)!important;border:2px dashed var(--bn-pink2)!important;border-radius:18px!important;box-shadow:none!important}
+:root[data-theme="bunny"] .check-all,:root[data-theme="bunny"] .expense-category{color:var(--bn-ink)}
+:root[data-theme="bunny"] input[type=checkbox]{accent-color:var(--bn-pink);width:18px;height:18px}
+
+/* AI summary */
+:root[data-theme="bunny"] .ai-summary-title{background:var(--bn-pink3)!important;border-bottom:2px dashed var(--bn-pink2)!important}
+:root[data-theme="bunny"] .ai-summary-title>span{background:var(--bn-pink)!important;color:#fff!important;border-radius:50%}
+:root[data-theme="bunny"] .ai-summary-body p,:root[data-theme="bunny"] .ai-summary-body li,
+:root[data-theme="bunny"] .ai-summary-body h4,:root[data-theme="bunny"] .ai-summary-body strong{color:var(--bn-ink)!important}
+
+/* โมเดล */
+:root[data-theme="bunny"] .model-id-card{box-shadow:var(--bn-shadow)!important}
+:root[data-theme="bunny"] .model-id-card.selected{outline:4px solid var(--bn-pink);outline-offset:3px}
+:root[data-theme="bunny"] .model-clip{background:var(--bn-pink)!important;border-color:#fff;color:#fff}
+:root[data-theme="bunny"] .model-avatar{background:linear-gradient(135deg,#ff9ccb,#ffb98a)!important;color:#fff!important;box-shadow:0 4px 0 #e56aa3}
+:root[data-theme="bunny"] .model-id-card>p,:root[data-theme="bunny"] .model-tag,
+:root[data-theme="bunny"] .model-id-card>small{color:var(--bn-ink2)!important}
+:root[data-theme="bunny"] .model-metrics>span,:root[data-theme="bunny"] .model-metrics-note{background:var(--bn-pink3)!important;color:var(--bn-ink2)!important;border-radius:14px}
+:root[data-theme="bunny"] .model-status{color:#2f7a5c}
+
+/* คลังแฟ้ม */
+:root[data-theme="bunny"] .archive-search,:root[data-theme="bunny"] .archive-risk-filter{
+  background:#fff!important;border:3px solid var(--bn-pink2)!important;border-radius:999px!important;color:var(--bn-ink2)!important;
+}
+:root[data-theme="bunny"] .archive-search input,:root[data-theme="bunny"] .archive-risk-filter select{border:0!important;color:var(--bn-ink)!important}
+:root[data-theme="bunny"] .archive-search>span{color:var(--bn-pink)}
+:root[data-theme="bunny"] .archive-count-row,:root[data-theme="bunny"] .archive-count-row small{color:var(--bn-ink2)}
+:root[data-theme="bunny"] .archive-count-row b{color:var(--bn-pink)}
+:root[data-theme="bunny"] .archive-file-card{
+  border:4px solid #fff!important;border-radius:28px!important;
+  background:linear-gradient(145deg,#c9f5e3,#a8ead0)!important;color:var(--bn-ink)!important;
+  box-shadow:0 7px 0 #8fdcbd,0 16px 26px rgba(80,140,120,.25)!important;
+}
+:root[data-theme="bunny"] .archive-file-card.archive-mid{background:linear-gradient(145deg,#fff6c9,#ffe58f)!important;box-shadow:0 7px 0 #f2cf63,0 16px 26px rgba(160,130,40,.25)!important}
+:root[data-theme="bunny"] .archive-file-card.archive-high{background:linear-gradient(145deg,#ffdbe9,#ffb3d0)!important;box-shadow:0 7px 0 #f58cb4,0 16px 26px rgba(200,80,130,.25)!important}
+:root[data-theme="bunny"] .archive-file-card .archive-tab{background:#fff!important;border-radius:12px 12px 0 0}
+:root[data-theme="bunny"] .archive-file-card *{color:var(--bn-ink)!important;text-shadow:none!important}
+:root[data-theme="bunny"] .archive-file-card .archive-file-name{font-family:'Itim','Mali',sans-serif!important;font-size:17px}
+:root[data-theme="bunny"] .archive-file-card .archive-file-number{background:#fff9!important;border-color:#fff!important;border-radius:999px}
+:root[data-theme="bunny"] .archive-file-card .archive-file-stats{border-color:#fff9!important}
+:root[data-theme="bunny"] .archive-create-card{
+  background:#fff!important;border:4px dashed var(--bn-pink)!important;border-radius:28px!important;color:var(--bn-ink)!important;box-shadow:none!important;
+}
+:root[data-theme="bunny"] .archive-create-card>span{border-color:var(--bn-pink);color:var(--bn-pink)}
+:root[data-theme="bunny"] .archive-create-card>small{color:var(--bn-ink2)}
+:root[data-theme="bunny"] .archive-rename-button,:root[data-theme="bunny"] .archive-delete-button{border-radius:50%;background:#fff;color:var(--bn-pink);border:2px solid var(--bn-pink2)}
+:root[data-theme="bunny"] .archive-empty{color:var(--bn-ink2);border-color:var(--bn-pink2)}
+
+/* โมดัล / แชต / ปุ่ม AI */
+:root[data-theme="bunny"] .score-modal{background:rgba(120,70,120,.35);backdrop-filter:blur(6px)}
+:root[data-theme="bunny"] .score-card h3,:root[data-theme="bunny"] .score-card h4{color:var(--bn-ink)}
+:root[data-theme="bunny"] .score-card p{color:var(--bn-ink2)}
+:root[data-theme="bunny"] .score-factors div{border-color:var(--bn-pink2)}
+:root[data-theme="bunny"] .score-factors div>i{background:#ffe3ef}
+:root[data-theme="bunny"] .score-factors div>i em{background:linear-gradient(90deg,#ffd27a,#ff8fc0)}
+:root[data-theme="bunny"] .detail-score b{color:var(--bn-pink)!important}
+:root[data-theme="bunny"] .ai-fab{
+  background:linear-gradient(145deg,#ff9ccb,#ffb98a)!important;color:#fff!important;border:4px solid #fff!important;
+  box-shadow:0 5px 0 #e56aa3,0 14px 24px rgba(255,143,192,.45)!important;
+}
+:root[data-theme="bunny"] .chat-panel{background:var(--bn-card)!important;color:var(--bn-ink)!important;border:4px solid #fff!important;border-radius:28px!important;box-shadow:var(--bn-shadow)!important;overflow:hidden}
+:root[data-theme="bunny"] .chat-head{background:linear-gradient(135deg,#ffd1e6,#e0d2ff)!important;color:var(--bn-ink)!important;border-bottom:0}
+:root[data-theme="bunny"] .chat-head small,:root[data-theme="bunny"] .chat-head button{color:var(--bn-ink2)!important}
+:root[data-theme="bunny"] .ai-spark{color:var(--bn-pink)}
+:root[data-theme="bunny"] .chat-body{background:#fff7fb!important}
+:root[data-theme="bunny"] .assistant-message{background:var(--bn-sky)!important;color:#3d5f7a!important;border-radius:20px 20px 20px 6px!important}
+:root[data-theme="bunny"] .user-message{background:var(--bn-pink2)!important;color:#7a2f58!important;border-radius:20px 20px 6px 20px!important}
+:root[data-theme="bunny"] .chat-suggestion{color:var(--bn-ink2)}
+:root[data-theme="bunny"] .chat-compose{background:#fff!important;border-top:3px dotted var(--bn-pink2)}
+:root[data-theme="bunny"] .chat-compose button{background:var(--bn-pink)!important;color:#fff;border-radius:50%;width:38px;height:38px}
+:root[data-theme="bunny"] .toast{background:#fff;color:var(--bn-ink);border:3px solid var(--bn-pink2);border-radius:999px;box-shadow:0 5px 0 var(--bn-pink2)}
+
+/* ล็อกอิน */
+:root[data-theme="bunny"] .auth-screen{background:linear-gradient(160deg,#fff0f7,#efe8ff 50%,#e0f4ff)!important}
+:root[data-theme="bunny"] .firebase-login-card{border-radius:36px!important}
+:root[data-theme="bunny"] .firebase-login-mark{border:0;border-radius:50%;transform:none;color:#fff;background:linear-gradient(145deg,#ff9ccb,#ffb98a);box-shadow:0 5px 0 #e56aa3}
+:root[data-theme="bunny"] .firebase-login-card>p,:root[data-theme="bunny"] .firebase-login-card label{color:var(--bn-ink2)}
+:root[data-theme="bunny"] .firebase-config-error{color:#c43a6d}
+:root[data-theme="bunny"] .firebase-login-message{color:#d14d80}
+
+/* ---------- ฉากตกแต่ง ---------- */
+.bunny-scene{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bunny-scene span{position:absolute;user-select:none;will-change:transform;filter:drop-shadow(0 6px 6px rgba(200,100,150,.18))}
+.bn-cloud{font-size:64px;opacity:.9;animation:bnDrift 60s linear infinite}
+.bn-c1{top:9%;left:-10%}.bn-c2{top:36%;left:-20%;font-size:84px;animation-duration:85s;animation-delay:-30s}
+.bn-c3{top:68%;left:-15%;font-size:52px;animation-duration:70s;animation-delay:-50s}
+.bn-float{opacity:.8;animation:bnBob 5s ease-in-out infinite alternate}
+.bn-f1{left:5%;top:26%;font-size:30px}.bn-f2{right:6%;top:18%;font-size:28px;animation-delay:-1.5s}
+.bn-f3{left:9%;bottom:12%;font-size:36px;animation-delay:-3s}.bn-f4{right:8%;bottom:16%;font-size:34px;animation-delay:-2s}
+.bn-f5{left:46%;top:6%;font-size:22px;animation-delay:-4s}.bn-f6{right:30%;bottom:6%;font-size:26px;animation-delay:-1s}
+.bn-star{color:#ffd54a;font-size:20px;animation:bnTwinkle 2.6s ease-in-out infinite}
+.bn-s1{left:22%;top:14%}.bn-s2{right:18%;top:44%;animation-delay:-1s}.bn-s3{left:36%;bottom:9%;animation-delay:-2s}.bn-s4{right:40%;top:12%;animation-delay:-.5s}
+@keyframes bnDrift{to{transform:translateX(130vw)}}
+@keyframes bnBob{from{transform:translateY(8px) rotate(-6deg)}to{transform:translateY(-16px) rotate(6deg)}}
+@keyframes bnTwinkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.25) rotate(20deg)}}
+.bunny-pop{position:fixed;z-index:9999;pointer-events:none;font-size:20px;animation:bnPop .9s ease-out forwards}
+@keyframes bnPop{to{transform:translate(var(--dx),var(--dy)) scale(1.4) rotate(40deg);opacity:0}}
+:root[data-theme="bunny"] .ai-fab{animation:bnBounce 2.4s ease-in-out infinite}
+@keyframes bnBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px) rotate(-4deg)}}
+
+/* ---------- มือถือ: เมนูหน้าย่อยเป็น dock ด้านล่าง ---------- */
+@media(max-width:760px){
+  :root[data-theme="bunny"] .topbar{margin:10px 0 4px;padding:0 12px!important;height:58px!important}
+  :root[data-theme="bunny"] .view-nav{
+    position:fixed!important;left:10px;right:10px;bottom:10px;z-index:30;margin:0!important;
+    box-shadow:0 5px 0 var(--bn-pink2),0 12px 28px rgba(255,143,192,.35);
+  }
+  :root[data-theme="bunny"] .content-view{padding-bottom:84px}
+  :root[data-theme="bunny"] body:has(#content:not([hidden])) .ai-fab{bottom:84px!important}
+  :root[data-theme="bunny"] .folder-front{background:linear-gradient(145deg,#ffd6e8,#ffb3d4)!important}
+  :root[data-theme="bunny"] .folder-back{background:linear-gradient(155deg,#ffc2dd,#ff9fc8)!important}
+  .bn-cloud{font-size:44px}.bn-f1,.bn-f2{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .bn-cloud,.bn-float,.bn-star,:root[data-theme="bunny"] .ai-fab{animation:none!important}
+}
