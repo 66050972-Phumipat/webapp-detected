@@ -143,8 +143,13 @@
   .floating-card,.folder-front,.folder-label{transition:none!important;animation:none!important}
 }
 
-/* Home card position swap: Statement on top-left, Case Summary on bottom-left. */
-@media (max-width: 768px){
-  .overview-card{left:3%!important;top:490px!important;bottom:auto!important}
-  .upload-card{left:3%!important;top:310px!important;bottom:auto!important}
+/* Swap home card positions: Overview <-> Import */
+@media (min-width:761px){
+  .overview-card{left:13%!important;top:auto!important;bottom:4%!important;}
+  .upload-card{left:2%!important;top:14%!important;bottom:auto!important;}
+}
+
+@media (max-width:760px){
+  .overview-card{left:4%!important;top:auto!important;bottom:4%!important;}
+  .upload-card{left:-1%!important;top:13%!important;bottom:auto!important;}
 }
