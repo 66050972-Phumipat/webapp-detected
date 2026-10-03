@@ -253,8 +253,11 @@ const activeCase = () => cases.find(c => c.id === activeCaseId) || cases[0];
 const saveCases = () => { try { localStorage.setItem('detected-cases-v1', JSON.stringify(cases)); } catch { toast('พื้นที่จัดเก็บข้อมูลเต็ม แฟ้มนี้ยังเปิดได้ในหน้านี้'); } };
 function updateActiveRows(rows, source) { sampleRows = rows.map(normalizeRow); activeCase().rows = sampleRows; activeCase().source = source || activeCase().source; saveCases(); renderCaseCarousel(); }
 function monthOptions() {
+  const sourceRows = state.person === 'all'
+    ? sampleRows
+    : sampleRows.filter(row => row.ownerName === state.person);
   const monthMap = new Map();
-  sampleRows.forEach(row => {
+  sourceRows.forEach(row => {
     if (!row.monthKey) return;
     if (!monthMap.has(row.monthKey)) monthMap.set(row.monthKey, new Set());
     if (row.sourceFileName) monthMap.get(row.monthKey).add(row.sourceFileName);
@@ -388,7 +391,7 @@ function showScore(index) {
   const row=sampleRows[index]; if(!row)return; state.selected=row;
   let modal=document.querySelector('#score-modal');if(!modal){modal=document.createElement('div');modal.id='score-modal';modal.className='score-modal';modal.innerHTML='<section class="score-card" id="score-card"></section>';document.body.append(modal);}
   const card=modal.querySelector('#score-card');
-  const details=[['เจ้าของข้อมูล',row.ownerName],['วันที่ทำรายการ',row.date],['เวลา',row.rawDate?new Date(row.rawDate).toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'}):'ไม่มีเวลาใน Statement'],['รายละเอียด',String(row.description||'').replace(/\s*-?\d[\d,]*(?:\.\d+)?\s*$/,'').trim()],['ประเภท',row.type],['จำนวนเงิน',(isExpense(row)?'รายจ่าย ':'รายรับ ')+money(row.amount)],['ยอดคงเหลือ',row.balance==null||Number.isNaN(Number(row.balance))?'ไม่มีข้อมูล':money(row.balance)],['ระดับความเสี่ยง',row.level],['โมเดลที่ใช้',state.activeModel]];
+  const details=[['เจ้าของข้อมูล',row.ownerName],['วันที่ทำรายการ',row.date],['เวลา',row.rawDate?new Date(row.rawDate).toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'}):'ไม่มีเวลาใน Statement'],['รายละเอียด',row.description],['ประเภท',row.type],['จำนวนเงิน',(isExpense(row)?'รายจ่าย ':'รายรับ ')+money(row.amount)],['ยอดคงเหลือ',row.balance==null||Number.isNaN(Number(row.balance))?'ไม่มีข้อมูล':money(row.balance)],['ระดับความเสี่ยง',row.level],['โมเดลที่ใช้',state.activeModel]];
   card.innerHTML=`<button class="close-score" aria-label="ปิด">×</button><span class="eyebrow">TRANSACTION DETAIL / CASE EVIDENCE</span><h3>${esc(row.description)}</h3><div class="detail-grid">${details.map(([k,v])=>`<div><small>${k}</small><b>${esc(v)}</b></div>`).join('')}</div><div class="detail-score"><span>RISK SCORE</span><b>${row.score}<small>/100</small></b></div><h4>ที่มาของคะแนน</h4><p>${esc(row.reasons)}</p><div class="score-factors">${row.factors.map(([label,score])=>`<div><span>${esc(label)}</span><b>+${Number(score||0).toFixed(1)}</b><i><em style="width:${Math.min(100,Math.max(0,Number(score||0)))}%"></em></i></div>`).join('')}</div><p class="score-disclaimer">คะแนนเกิดจาก Machine Learning และ anomaly score ใช้ประกอบการตรวจสอบ ไม่ใช่เปอร์เซ็นต์โอกาสเกิดการทุจริต</p>`;
   modal.hidden=false;
 }
