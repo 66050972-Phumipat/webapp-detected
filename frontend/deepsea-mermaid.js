@@ -183,7 +183,7 @@
   function inject() {
     const s = document.querySelector('#setting-theme');
     if (!s || s.querySelector(`option[value="${THEME}"]`)) return;
-    s.insertAdjacentHTML('beforeend', `<option value="${THEME}">🐠 Deep Sea Mermaid</option>`);
+    s.insertAdjacentHTML('beforeend', `<option value="${THEME}">🧜‍♀️ Mermaid Melody</option>`);
     if (isOn()) s.value = THEME;
   }
   const vc = document.querySelector('#view-content');
