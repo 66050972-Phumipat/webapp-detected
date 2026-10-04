@@ -161,9 +161,9 @@
 :root[data-theme="fairy"] .cashflow-card span,:root[data-theme="fairy"] .cashflow-card small,
 :root[data-theme="fairy"] .expense-category small,:root[data-theme="fairy"] .detail-grid small{color:var(--fy-ink2)!important}
 :root[data-theme="fairy"] .overview-metrics b,:root[data-theme="fairy"] .risk-donut b{color:var(--fy-ink)!important;font-family:'Itim',sans-serif}
-:root[data-theme="fairy"] .overview-metrics article{border-left:0!important;border-top:7px solid var(--fy-mint)!important}
-:root[data-theme="fairy"] .overview-metrics article:nth-child(2){border-top-color:var(--fy-butter)!important}
-:root[data-theme="fairy"] .overview-metrics article:nth-child(3){border-top-color:var(--fy-rose)!important}
+:root[data-theme="fairy"] .overview-metrics article{border-left:0!important;border-top:7px solid #96caf1!important}
+:root[data-theme="fairy"] .overview-metrics article:nth-child(2){border-top-color:#ffc07d!important}
+:root[data-theme="fairy"] .overview-metrics article:nth-child(3){border-top-color:#ff98a2!important}
 :root[data-theme="fairy"] .cashflow-card{border-top:7px solid var(--fy-mint)!important}
 :root[data-theme="fairy"] .cashflow-card.expense{border-top-color:var(--fy-rose)!important}
 :root[data-theme="fairy"] .cashflow-card.net{border-top-color:var(--fy-butter)!important}

@@ -119,8 +119,8 @@
 }
 
 /* Requested metric card colors: green / yellow / red side bars */
-.overview-metrics article:nth-child(1){border-left-color:#6f9f7b !important;}
-.overview-metrics article:nth-child(2){border-left-color:#d9b83f !important;}
+.overview-metrics article:nth-child(1){border-left-color:#4c8fc4 !important;}
+.overview-metrics article:nth-child(2){border-left-color:#df9720 !important;}
 .overview-metrics article:nth-child(3){border-left-color:#c94f5b !important;}
 
 /* Make archive folders reliably clickable above hover/3D layers. */

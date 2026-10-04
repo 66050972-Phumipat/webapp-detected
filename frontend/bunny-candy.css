@@ -165,9 +165,9 @@
 :root[data-theme="bunny"] .cashflow-card span,:root[data-theme="bunny"] .cashflow-card small,
 :root[data-theme="bunny"] .panel-heading-row p{color:var(--bn-ink2)!important}
 :root[data-theme="bunny"] .overview-metrics b,:root[data-theme="bunny"] .risk-donut b{color:var(--bn-ink)!important;font-family:'Itim',sans-serif}
-:root[data-theme="bunny"] .overview-metrics article{border-left:0!important;border-top:8px solid var(--bn-mint)!important}
-:root[data-theme="bunny"] .overview-metrics article:nth-child(2){border-top-color:var(--bn-butter)!important}
-:root[data-theme="bunny"] .overview-metrics article:nth-child(3){border-top-color:var(--bn-pink)!important}
+:root[data-theme="bunny"] .overview-metrics article{border-left:0!important;border-top:8px solid #96caf1!important}
+:root[data-theme="bunny"] .overview-metrics article:nth-child(2){border-top-color:#ffc07d!important}
+:root[data-theme="bunny"] .overview-metrics article:nth-child(3){border-top-color:#ff98a2!important}
 :root[data-theme="bunny"] .cashflow-card{border-top:8px solid var(--bn-mint)!important}
 :root[data-theme="bunny"] .cashflow-card.expense{border-top-color:var(--bn-pink)!important}
 :root[data-theme="bunny"] .cashflow-card.net{border-top-color:var(--bn-butter)!important}

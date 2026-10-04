@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;500;600;700&display=swap');
+/* =========================================================
+   DETECTED · ELF FOREST THEME  (data-theme="elf")
+   สวนนางฟ้ายามพลบค่ำ · ฝุ่นประกาย · กลีบดอกไม้ · หิ่งห้อย
+   โหลดหลังไฟล์ CSS อื่นทั้งหมด (หลัง mobile.css)
+   ไม่แตะ position/width ของเลย์เอาต์หลัก ปล่อยให้ mobile.css คุม
+   ========================================================= */
+:root[data-theme="elf"]{
+  --el-lilac:#c3fabb; --el-lilac2:#e3fde0; --el-mint:#c1efdb; --el-rose:#c8fbdb;
+  --el-butter:#f9efb6; --el-sky:#e6fcd5; --el-gold:#f4d376;
+  --el-ink:#41673e; --el-ink2:#71986e; --el-card:#fbfffc; --el-magenta:#72ce81;
+  --el-grad:linear-gradient(135deg,#99e894,#96e9af);
+  --el-petal:32px 10px 32px 10px;
+  --el-glow:0 0 0 2px rgba(195,250,187,.55),0 14px 32px rgba(126,212,118,.28);
+  font-family:'Mali',Tahoma,sans-serif;
+}
+
+/* ---------- พื้นหลังพลบค่ำ + แสงฝุ่นนางฟ้า ---------- */
+:root[data-theme="elf"] body{
+  color:var(--el-ink);font-family:'Mali',Tahoma,sans-serif;overflow-x:hidden;
+  background:
+    radial-gradient(circle at 18% 14%,rgba(200,251,219,.65),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(230,252,213,.8),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(193,239,219,.9),transparent 42%),
+    linear-gradient(170deg,#eafde8 0%,#ecfdec 40%,#e5f6f0 100%);
+  background-attachment:fixed;
+}
+:root[data-theme="elf"] body::before{ /* ลำแสงนุ่มๆ */
+  content:"";position:fixed;inset:-10% -10% 30% -10%;pointer-events:none;z-index:0;opacity:.6;
+  background:repeating-linear-gradient(105deg,transparent 0 90px,rgba(255,255,255,.55) 90px 140px,transparent 140px 260px);
+  -webkit-mask-image:linear-gradient(to bottom,#000000,transparent);mask-image:linear-gradient(to bottom,#000000,transparent);
+  animation:elRays 16s ease-in-out infinite alternate;
+}
+@keyframes elRays{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
+:root[data-theme="elf"] button,:root[data-theme="elf"] input,
+:root[data-theme="elf"] select,:root[data-theme="elf"] textarea,
+:root[data-theme="elf"] table{font-family:'Mali',Tahoma,sans-serif}
+:root[data-theme="elf"] h1,:root[data-theme="elf"] h2,:root[data-theme="elf"] h3,
+:root[data-theme="elf"] h4,:root[data-theme="elf"] b,:root[data-theme="elf"] strong{
+  font-family:'Itim','Mali',sans-serif;font-weight:400;
+}
+:root[data-theme="elf"] .app-shell{position:relative;z-index:2}
+:root[data-theme="elf"] .eyebrow,:root[data-theme="elf"] .card-kicker,
+:root[data-theme="elf"] .folder-index,:root[data-theme="elf"] .page-footer,
+:root[data-theme="elf"] .case-context{font-family:'Itim','Mali',sans-serif!important;color:var(--el-magenta)!important;letter-spacing:.8px}
+
+/* ---------- Topbar: เถาวัลย์ ---------- */
+:root[data-theme="elf"] .topbar{
+  background:rgba(255,255,255,.78)!important;backdrop-filter:blur(10px);
+  border:2px solid #ffffff!important;border-radius:30px 10px 30px 10px;margin:14px 0 6px;padding-left:18px!important;padding-right:18px!important;
+  box-shadow:var(--el-glow);
+}
+:root[data-theme="elf"] .brand,:root[data-theme="elf"] .brand b{color:var(--el-ink)}
+:root[data-theme="elf"] .brand small,:root[data-theme="elf"] .top-status,
+:root[data-theme="elf"] .account-user-label{color:var(--el-ink2)}
+:root[data-theme="elf"] .brand-mark{
+  border:0;border-radius:50% 50% 50% 8px;transform:rotate(-8deg);color:#ffffff;font-family:'Itim',sans-serif;
+  background:var(--el-grad);box-shadow:0 0 14px rgba(148,232,149,.7);
+}
+:root[data-theme="elf"] .top-status>i{background:var(--el-gold);box-shadow:0 0 0 4px rgba(244,211,118,.35),0 0 12px var(--el-gold)}
+:root[data-theme="elf"] .top-settings-button{color:var(--el-magenta)}
+
+/* ---------- หัวเรื่อง ---------- */
+:root[data-theme="elf"] .intro-copy h1,:root[data-theme="elf"] .view-heading h2{color:var(--el-ink);text-shadow:0 2px 12px rgba(255,255,255,.9)}
+:root[data-theme="elf"] .intro-copy h1:before{content:"🌿 "}
+:root[data-theme="elf"] .intro-copy h1:after{content:" ✨"}
+:root[data-theme="elf"] .view-heading h2:before{content:"🧚 "}
+:root[data-theme="elf"] .intro-copy p,:root[data-theme="elf"] .view-heading p,
+:root[data-theme="elf"] .empty-note,:root[data-theme="elf"] .loading-note,
+:root[data-theme="elf"] .case-carousel-label,:root[data-theme="elf"] .case-carousel-label small{color:var(--el-ink2)!important}
+:root[data-theme="elf"] .page-footer{border-top:2px dotted var(--el-lilac);color:var(--el-ink2)}
+:root[data-theme="elf"] .sample-banner{background:var(--el-butter);color:#736127;border:0;border-radius:16px 6px 16px 6px}
+
+/* ---------- หน้าแรก: แฟ้มเป็นสมุดนางฟ้า ---------- */
+:root[data-theme="elf"] .folder-back{
+  background:linear-gradient(155deg,#cefbc8,#abeea3 55%,#91de87)!important;
+  box-shadow:inset 0 3px #fff9,inset 0 -14px #7ad070,0 22px 34px rgba(126,212,118,.4)!important;filter:none;
+}
+:root[data-theme="elf"] .folder-front{
+  background:linear-gradient(145deg,#e1fcde,#c4f6be 55%,#aaeaa3)!important;
+  box-shadow:inset 0 3px #fffa,inset 0 -11px #97e38e!important;
+}
+:root[data-theme="elf"] .folder-tab{background:var(--el-mint);color:#346654}
+:root[data-theme="elf"] .folder-stamp{border-color:#a5f8c3;color:#89f5b0;border-radius:16px;background:#fff8}
+:root[data-theme="elf"] .folder-index{color:#ffffff!important}
+:root[data-theme="elf"] .folder-label{
+  background:#fefdf8!important;color:var(--el-ink)!important;border-radius:var(--el-petal);
+  border:3px dotted var(--el-lilac);box-shadow:0 8px 0 var(--el-lilac2),0 14px 26px rgba(126,212,118,.3)!important;
+}
+:root[data-theme="elf"] .folder-label strong{font-family:'Itim',sans-serif!important;color:var(--el-ink)!important}
+:root[data-theme="elf"] .folder-label small,:root[data-theme="elf"] .folder-label>span{font-family:'Mali',sans-serif!important;color:var(--el-ink2)!important}
+:root[data-theme="elf"] .folder-lines i{background:#fff9}
+:root[data-theme="elf"] .folder-arrow{background:#ffffff!important;color:var(--el-magenta)!important;border:2px solid var(--el-lilac)!important;box-shadow:0 0 14px rgba(153,232,148,.6)!important}
+:root[data-theme="elf"] .folder-peek{background:linear-gradient(145deg,#c1efdb,#95d6be 62%,#76c2a6)!important;border-color:#ffffff;color:#346654;box-shadow:inset 0 2px #fff9,inset 0 -10px #66b89d!important}
+:root[data-theme="elf"] .folder-peek small{color:#ffffff}
+:root[data-theme="elf"] .folder-peek b{color:#285646}
+:root[data-theme="elf"] .folder-peek.new-case-peek{background:linear-gradient(145deg,#dcfce8,#b9f9d1 62%,#9beeba)!important}
+
+/* การ์ดเมนู = กลีบดอกไม้ */
+:root[data-theme="elf"] .floating-card{
+  color:var(--el-ink)!important;border:3px solid #ffffff!important;border-radius:var(--el-petal)!important;
+  box-shadow:0 0 0 2px rgba(195,250,187,.5),0 14px 26px rgba(126,212,118,.3)!important;
+}
+:root[data-theme="elf"] .floating-card:hover{box-shadow:0 0 0 2px var(--el-lilac),0 0 26px rgba(160,243,157,.7),0 20px 30px rgba(126,212,118,.3)!important}
+:root[data-theme="elf"] .floating-card:after{display:none}
+:root[data-theme="elf"] .card-pin{background:none!important;box-shadow:none!important;width:auto;height:auto;font-size:18px;line-height:1;top:-12px}
+:root[data-theme="elf"] .card-pin:after{content:"🌷"}
+:root[data-theme="elf"] .floating-card b{font-family:'Itim',sans-serif!important;color:var(--el-ink)!important}
+:root[data-theme="elf"] .floating-card small{color:var(--el-ink2)!important;opacity:1}
+:root[data-theme="elf"] .card-arrow{color:var(--el-magenta);opacity:1}
+:root[data-theme="elf"] .upload-card{background:linear-gradient(145deg,#d4fbe2,#aef3c6)!important}
+:root[data-theme="elf"] .upload-card .card-kicker,:root[data-theme="elf"] .upload-card small{color:#3f7550!important}
+:root[data-theme="elf"] .overview-card{background:linear-gradient(145deg,#fbf5cd,#f7e497)!important}
+:root[data-theme="elf"] .ledger-card{background:linear-gradient(145deg,#eafcdb,#d5f5bb)!important}
+:root[data-theme="elf"] .settings-card{background:linear-gradient(145deg,#dbf5ea,#b9e7d3)!important}
+:root[data-theme="elf"] .upload-icon,:root[data-theme="elf"] .settings-icon,:root[data-theme="elf"] .card-icon{background:#ffffff!important;color:var(--el-magenta)!important;border-radius:50% 50% 50% 8px}
+:root[data-theme="elf"] .ledger-mini{color:var(--el-ink);border-color:#ffffff}
+:root[data-theme="elf"] .ledger-mini i{background:#fff9}
+
+/* ---------- เมนูหน้าย่อย / ปุ่ม ---------- */
+:root[data-theme="elf"] .back-button{background:#ffffff!important;color:var(--el-ink)!important;border:2px solid var(--el-lilac)!important;border-radius:20px 6px 20px 6px!important;box-shadow:0 0 12px rgba(153,232,148,.4)!important}
+:root[data-theme="elf"] .view-nav{background:rgba(255,255,255,.75)!important;border:2px solid #ffffff!important;border-radius:26px 8px 26px 8px!important;padding:6px!important;box-shadow:var(--el-glow);backdrop-filter:blur(8px)}
+:root[data-theme="elf"] .view-nav button{background:transparent!important;color:var(--el-ink2)!important;border:0!important;border-radius:18px 6px 18px 6px!important;box-shadow:none!important}
+:root[data-theme="elf"] .view-nav button.active,:root[data-theme="elf"] .view-nav button:hover{background:var(--el-grad)!important;color:#ffffff!important;box-shadow:0 0 14px rgba(148,232,149,.7)!important}
+:root[data-theme="elf"] .primary-action,:root[data-theme="elf"] .settings-save,
+:root[data-theme="elf"] .ai-summary-button,:root[data-theme="elf"] .provider-button,
+:root[data-theme="elf"] .model-use-button,:root[data-theme="elf"] .archive-add-button,
+:root[data-theme="elf"] .account-link,:root[data-theme="elf"] .case-actions button,
+:root[data-theme="elf"] .text-action{
+  background:var(--el-grad)!important;color:#ffffff!important;border:0!important;border-radius:20px 6px 20px 6px!important;
+  font-family:'Itim','Mali',sans-serif;box-shadow:0 4px 0 #73cf6f,0 0 16px rgba(148,232,149,.5)!important;text-shadow:0 1px 0 #63b965;
+  transition:transform .18s,filter .18s;
+}
+:root[data-theme="elf"] .primary-action:hover:not(:disabled),:root[data-theme="elf"] .settings-save:hover,
+:root[data-theme="elf"] .ai-summary-button:hover:not(:disabled),:root[data-theme="elf"] .case-actions button:hover{transform:translateY(-2px) rotate(-1deg);filter:brightness(1.07)}
+:root[data-theme="elf"] .primary-action:active,:root[data-theme="elf"] .settings-save:active{transform:translateY(3px);box-shadow:0 1px 0 #73cf6f!important}
+:root[data-theme="elf"] .case-actions #delete-case{background:linear-gradient(135deg,#c9efa5,#b6eb96)!important;box-shadow:0 4px 0 #96d075!important}
+:root[data-theme="elf"] .model-use-button:disabled{background:var(--el-mint)!important;color:#346654!important;box-shadow:none!important;text-shadow:none}
+:root[data-theme="elf"] .delete-file-button{border-radius:12px 4px 12px 4px;background:#f1fef6;color:#58b875;border-color:#b9f9cf}
+
+/* ---------- การ์ดทั่วไป ---------- */
+:root[data-theme="elf"] .preview-panel,:root[data-theme="elf"] .settings-real,
+:root[data-theme="elf"] .user-profile-card,:root[data-theme="elf"] .user-directory,
+:root[data-theme="elf"] .permission-note,:root[data-theme="elf"] .login-card,
+:root[data-theme="elf"] .upload-board,:root[data-theme="elf"] .imported-file-panel,
+:root[data-theme="elf"] .ledger-paper,:root[data-theme="elf"] .chart-panel,
+:root[data-theme="elf"] .cashflow-card,:root[data-theme="elf"] .overview-metrics article,
+:root[data-theme="elf"] .expense-filter-panel,:root[data-theme="elf"] .score-card,
+:root[data-theme="elf"] .model-id-card,:root[data-theme="elf"] .ai-summary-result,
+:root[data-theme="elf"] .artifact-model-library,:root[data-theme="elf"] .modal-card{
+  background:var(--el-card)!important;color:var(--el-ink)!important;
+  border:3px solid #ffffff!important;border-radius:var(--el-petal)!important;
+  box-shadow:var(--el-glow)!important;clip-path:none;
+}
+:root[data-theme="elf"] .upload-board:before,:root[data-theme="elf"] .ledger-paper:before{display:none}
+:root[data-theme="elf"] .upload-folder-tab{background:var(--el-grad);color:#ffffff;border-radius:12px 12px 0 0}
+:root[data-theme="elf"] .preview-panel p,:root[data-theme="elf"] .settings-real p,:root[data-theme="elf"] .upload-privacy,
+:root[data-theme="elf"] .model-note,:root[data-theme="elf"] .ledger-foot,:root[data-theme="elf"] .panel-heading-row p,
+:root[data-theme="elf"] .chart-heading>small,:root[data-theme="elf"] .chart-key,
+:root[data-theme="elf"] .overview-metrics span,:root[data-theme="elf"] .overview-metrics small,
+:root[data-theme="elf"] .cashflow-card span,:root[data-theme="elf"] .cashflow-card small,
+:root[data-theme="elf"] .expense-category small,:root[data-theme="elf"] .detail-grid small{color:var(--el-ink2)!important}
+:root[data-theme="elf"] .overview-metrics b,:root[data-theme="elf"] .risk-donut b{color:var(--el-ink)!important;font-family:'Itim',sans-serif}
+:root[data-theme="elf"] .overview-metrics article{border-left:0!important;border-top:7px solid var(--el-mint)!important}
+:root[data-theme="elf"] .overview-metrics article:nth-child(2){border-top-color:var(--el-butter)!important}
+:root[data-theme="elf"] .overview-metrics article:nth-child(3){border-top-color:var(--el-rose)!important}
+:root[data-theme="elf"] .cashflow-card{border-top:7px solid var(--el-mint)!important}
+:root[data-theme="elf"] .cashflow-card.expense{border-top-color:var(--el-rose)!important}
+:root[data-theme="elf"] .cashflow-card.net{border-top-color:var(--el-butter)!important}
+:root[data-theme="elf"] .owner-input-row,:root[data-theme="elf"] .pdf-password-row,
+:root[data-theme="elf"] .upload-steps,:root[data-theme="elf"] .imported-file,
+:root[data-theme="elf"] .ledger-paper .preview-filter,:root[data-theme="elf"] .case-score-breakdown span,
+:root[data-theme="elf"] .score-factors,:root[data-theme="elf"] .detail-grid>div,
+:root[data-theme="elf"] .detail-score,:root[data-theme="elf"] .expense-category{
+  background:#f2fef1!important;color:var(--el-ink)!important;border:2px dotted var(--el-lilac)!important;border-radius:18px 6px 18px 6px!important;box-shadow:none!important;
+}
+:root[data-theme="elf"] .detail-score b{color:var(--el-magenta)!important}
+
+/* ปกภาพรวม + ป้ายคะแนน */
+:root[data-theme="elf"] .overview-cover{
+  clip-path:none!important;border-radius:36px 10px 36px 10px;border:3px solid #ffffff;
+  background:linear-gradient(145deg,#e1fcde,#c8f6c4 55%,#cbf2d5);box-shadow:var(--el-glow);
+}
+:root[data-theme="elf"] .overview-cover:after{display:none}
+:root[data-theme="elf"] .cover-folder-tab{background:#ffffff;color:var(--el-magenta);border-radius:10px}
+:root[data-theme="elf"] .cover-copy,:root[data-theme="elf"] .cover-copy h3,
+:root[data-theme="elf"] .cover-copy p,:root[data-theme="elf"] .cover-kicker{color:var(--el-ink)!important;font-family:'Itim','Mali',sans-serif}
+:root[data-theme="elf"] .cover-classified{background:#ffffff;color:var(--el-magenta);border:2px dotted var(--el-magenta);box-shadow:none;border-radius:12px 4px 12px 4px}
+:root[data-theme="elf"] .risk-id-badge{
+  border:3px solid #ffffff!important;border-radius:60px 14px 60px 14px!important;
+  background:linear-gradient(145deg,#f5fef9,#d0f0e3)!important;box-shadow:0 0 0 2px #ade1cb,0 16px 26px rgba(85,145,119,.28)!important;
+}
+:root[data-theme="elf"] .risk-id-badge:before,:root[data-theme="elf"] .risk-id-badge:after{display:none}
+:root[data-theme="elf"] .risk-id-badge.badge-risk-mid{background:linear-gradient(145deg,#fdf9e2,#f8eaa7)!important;box-shadow:0 0 0 2px #f5dc84,0 16px 26px rgba(151,126,49,.25)!important}
+:root[data-theme="elf"] .risk-id-badge.badge-risk-high{background:linear-gradient(145deg,#f1fef6,#cafbdc)!important;box-shadow:0 0 0 2px #a6f8c3,0 16px 26px rgba(89,191,123,.25)!important}
+:root[data-theme="elf"] .badge-clip{display:none}
+:root[data-theme="elf"] .badge-photo{border-radius:50%;border-color:#ffffff;background:#ffffff;color:var(--el-magenta)}
+:root[data-theme="elf"] .badge-score strong{color:var(--el-ink)!important}
+
+/* ---------- ฟอร์ม / อัปโหลด ---------- */
+:root[data-theme="elf"] input,:root[data-theme="elf"] select,:root[data-theme="elf"] textarea,
+:root[data-theme="elf"] .month-select,:root[data-theme="elf"] .person-select{
+  background:#ffffff!important;color:var(--el-ink)!important;border:2px solid var(--el-lilac)!important;border-radius:16px 5px 16px 5px!important;box-shadow:none!important;
+}
+:root[data-theme="elf"] input:focus,:root[data-theme="elf"] select:focus{outline:0;border-color:var(--el-magenta)!important;box-shadow:0 0 12px rgba(114,206,129,.35)!important}
+:root[data-theme="elf"] input::placeholder{color:#afd0ac}
+:root[data-theme="elf"] input[type=checkbox]{accent-color:var(--el-magenta);width:18px;height:18px}
+:root[data-theme="elf"] .drop-zone{background:linear-gradient(145deg,#f6fef6,#effbf6)!important;border:3px dotted var(--el-lilac)!important;border-radius:32px 10px 32px 10px!important;box-shadow:none!important;color:var(--el-ink)!important}
+:root[data-theme="elf"] .drop-zone .drop-icon{background:var(--el-lilac2);color:var(--el-magenta)}
+:root[data-theme="elf"] .drop-zone:hover,:root[data-theme="elf"] .drop-zone.drag-active{background:#f1fef0!important}
+:root[data-theme="elf"] .upload-steps .current i{background:var(--el-magenta);color:#ffffff;border-color:var(--el-magenta)}
+:root[data-theme="elf"] .file-preview{background:var(--el-mint);color:#346654;border-left-color:#76c3a4;border-radius:14px 4px 14px 4px}
+:root[data-theme="elf"] .upload-error{background:#e5fdee;color:#3faa6e;border-left-color:#89f5b0;border-radius:12px}
+
+/* ---------- ตาราง / ป้ายความเสี่ยง ---------- */
+:root[data-theme="elf"] .ledger-table-scroll{background:#ffffff;border:2px dotted var(--el-lilac);border-radius:22px 6px 22px 6px}
+:root[data-theme="elf"] .sample-table{background:transparent!important;color:var(--el-ink)!important}
+:root[data-theme="elf"] .sample-table th{background:#eefdec!important;color:var(--el-magenta)!important;border-bottom:2px solid var(--el-lilac)!important;font-family:'Itim',sans-serif}
+:root[data-theme="elf"] .sample-table td{border-color:#eafae9!important}
+:root[data-theme="elf"] .sample-table tbody tr:hover,:root[data-theme="elf"] .ledger-table-scroll tbody tr:hover{background:#f4fef4!important}
+:root[data-theme="elf"] .preview-list button{background:#ffffff;border:2px dotted var(--el-lilac);border-radius:18px 5px 18px 5px;color:var(--el-ink)}
+:root[data-theme="elf"] .preview-list button:hover{background:#f4fef4}
+:root[data-theme="elf"] .risk-badge{border-radius:12px 4px 12px 4px;font-family:'Itim',sans-serif;padding:4px 10px}
+:root[data-theme="elf"] .risk-high{background:#d6fce4;color:#43af67}
+:root[data-theme="elf"] .risk-mid{background:#f8ecaf;color:#816619}
+:root[data-theme="elf"] .risk-normal{background:#ccf2e2;color:#35745b}
+:root[data-theme="elf"] .paper-stamp{border-color:var(--el-magenta);color:var(--el-magenta);border-radius:12px 4px 12px 4px}
+
+/* ---------- กราฟ ---------- */
+:root[data-theme="elf"] .risk-donut:before{background:var(--el-card);box-shadow:none}
+:root[data-theme="elf"] .bar-income{background:linear-gradient(#c1efdb,#76c3a4)}
+:root[data-theme="elf"] .bar-expense{background:linear-gradient(#d4fbe1,#96e9af)}
+:root[data-theme="elf"] .month-bars i{border-radius:12px 12px 0 0}
+:root[data-theme="elf"] .category-chart>div>i{background:#eafae9}
+:root[data-theme="elf"] .category-chart em{background:linear-gradient(90deg,#c3fabb,#96e9af)}
+:root[data-theme="elf"] .income-key{background:#76c3a4}
+:root[data-theme="elf"] .expense-key{background:#96e9af}
+
+/* ---------- AI summary / โมเดล ---------- */
+:root[data-theme="elf"] .ai-summary-title{background:#f2fef1!important;border-bottom:2px dotted var(--el-lilac)!important}
+:root[data-theme="elf"] .ai-summary-title>span{background:var(--el-grad)!important;color:#ffffff!important;border-radius:50% 50% 50% 8px}
+:root[data-theme="elf"] .ai-summary-body p,:root[data-theme="elf"] .ai-summary-body li,
+:root[data-theme="elf"] .ai-summary-body h4,:root[data-theme="elf"] .ai-summary-body strong{color:var(--el-ink)!important}
+:root[data-theme="elf"] .model-id-card.selected{outline:3px solid var(--el-magenta);outline-offset:3px}
+:root[data-theme="elf"] .model-clip{background:radial-gradient(circle at 35% 30%,#ffffff,#bdf1ca 70%)!important;border-color:#ffffff;color:#ffffff}
+:root[data-theme="elf"] .model-avatar{background:var(--el-grad)!important;color:#ffffff!important}
+:root[data-theme="elf"] .model-id-card>p,:root[data-theme="elf"] .model-tag,:root[data-theme="elf"] .model-id-card>small{color:var(--el-ink2)!important}
+:root[data-theme="elf"] .model-status{color:#35745b}
+:root[data-theme="elf"] .model-metrics>span,:root[data-theme="elf"] .model-metrics-note{background:#f2fef1!important;color:var(--el-ink2)!important;border-radius:12px 4px 12px 4px}
+
+/* ---------- คลังแฟ้ม ---------- */
+:root[data-theme="elf"] .archive-search,:root[data-theme="elf"] .archive-risk-filter{background:#ffffff!important;border:2px solid var(--el-lilac)!important;border-radius:20px 6px 20px 6px!important;color:var(--el-ink2)!important}
+:root[data-theme="elf"] .archive-search input,:root[data-theme="elf"] .archive-risk-filter select{border:0!important;color:var(--el-ink)!important}
+:root[data-theme="elf"] .archive-search>span{color:var(--el-magenta)}
+:root[data-theme="elf"] .archive-count-row,:root[data-theme="elf"] .archive-count-row small{color:var(--el-ink2)}
+:root[data-theme="elf"] .archive-count-row b{color:var(--el-magenta)}
+:root[data-theme="elf"] .archive-file-card{
+  border:3px solid #ffffff!important;border-radius:var(--el-petal)!important;color:var(--el-ink)!important;
+  background:linear-gradient(145deg,#dbf5ea,#b4e5cf)!important;box-shadow:0 0 0 2px #ade1cb,0 14px 26px rgba(85,145,119,.28)!important;
+}
+:root[data-theme="elf"] .archive-file-card.archive-mid{background:linear-gradient(145deg,#fbf5cd,#f7e497)!important;box-shadow:0 0 0 2px #f5dc84,0 14px 26px rgba(151,126,49,.25)!important}
+:root[data-theme="elf"] .archive-file-card.archive-high{background:linear-gradient(145deg,#e2fdec,#bdfad3)!important;box-shadow:0 0 0 2px #a6f8c3,0 14px 26px rgba(89,191,123,.25)!important}
+:root[data-theme="elf"] .archive-file-card .archive-tab{background:#ffffff!important;border-radius:12px 12px 0 0}
+:root[data-theme="elf"] .archive-file-card *{color:var(--el-ink)!important;text-shadow:none!important}
+:root[data-theme="elf"] .archive-file-card .archive-file-name{font-family:'Itim','Mali',sans-serif!important;font-size:17px}
+:root[data-theme="elf"] .archive-file-card .archive-file-number{background:#fff9!important;border-color:#ffffff!important;border-radius:12px 4px 12px 4px}
+:root[data-theme="elf"] .archive-file-card .archive-file-stats{border-color:#fff9!important}
+:root[data-theme="elf"] .archive-create-card{background:#ffffff!important;border:3px dotted var(--el-magenta)!important;border-radius:var(--el-petal)!important;color:var(--el-ink)!important;box-shadow:none!important}
+:root[data-theme="elf"] .archive-create-card>span{border-color:var(--el-magenta);color:var(--el-magenta)}
+:root[data-theme="elf"] .archive-create-card>small{color:var(--el-ink2)}
+:root[data-theme="elf"] .archive-rename-button,:root[data-theme="elf"] .archive-delete-button{border-radius:12px 4px 12px 4px;background:#ffffff;color:var(--el-magenta);border:2px solid var(--el-lilac)}
+:root[data-theme="elf"] .archive-empty{color:var(--el-ink2);border-color:var(--el-lilac)}
+
+/* ---------- โมดัล / แชต / FAB / Toast ---------- */
+:root[data-theme="elf"] .score-modal{background:rgba(65,103,62,.45);backdrop-filter:blur(6px)}
+:root[data-theme="elf"] .score-card h3,:root[data-theme="elf"] .score-card h4{color:var(--el-ink)}
+:root[data-theme="elf"] .score-card p{color:var(--el-ink2)}
+:root[data-theme="elf"] .score-factors div{border-color:var(--el-lilac2)}
+:root[data-theme="elf"] .score-factors div>i{background:#eafae9}
+:root[data-theme="elf"] .score-factors div>i em{background:linear-gradient(90deg,#c3fabb,#96e9af)}
+:root[data-theme="elf"] .ai-fab{
+  background:radial-gradient(circle at 35% 28%,#ffffff,#e3fde0 45%,#bdf1ca 100%)!important;color:#469348!important;border:3px solid #ffffff!important;
+  box-shadow:0 0 22px rgba(114,206,129,.6),0 10px 22px rgba(126,212,118,.4)!important;animation:elFab 3s ease-in-out infinite;
+}
+@keyframes elFab{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px) rotate(5deg)}}
+:root[data-theme="elf"] .chat-panel{background:var(--el-card)!important;color:var(--el-ink)!important;border:3px solid #ffffff!important;border-radius:30px 10px 30px 10px!important;box-shadow:var(--el-glow)!important;overflow:hidden}
+:root[data-theme="elf"] .chat-head{background:linear-gradient(135deg,#e3fde0,#d9fce5)!important;color:var(--el-ink)!important;border-bottom:0}
+:root[data-theme="elf"] .chat-head small,:root[data-theme="elf"] .chat-head button{color:var(--el-ink2)!important}
+:root[data-theme="elf"] .ai-spark{color:var(--el-magenta)}
+:root[data-theme="elf"] .chat-body{background:#f9fef9!important}
+:root[data-theme="elf"] .assistant-message{background:#f2fde7!important;color:#587542!important;border-radius:20px 20px 20px 4px!important}
+:root[data-theme="elf"] .user-message{background:#dffce9!important;color:#357446!important;border-radius:20px 20px 4px 20px!important}
+:root[data-theme="elf"] .chat-suggestion{color:var(--el-ink2)}
+:root[data-theme="elf"] .chat-compose{background:#ffffff!important;border-top:2px dotted var(--el-lilac)}
+:root[data-theme="elf"] .chat-compose button{background:var(--el-magenta)!important;color:#ffffff;border-radius:50% 50% 50% 8px;width:38px;height:38px}
+:root[data-theme="elf"] .toast{background:#ffffff;color:var(--el-ink);border:2px solid var(--el-lilac);border-radius:20px 6px 20px 6px;box-shadow:0 0 18px rgba(153,232,148,.5)}
+
+/* ---------- ล็อกอิน ---------- */
+:root[data-theme="elf"] .auth-screen{background:linear-gradient(170deg,#eafde8,#ecfdec 45%,#e5f6f0)!important}
+:root[data-theme="elf"] .firebase-login-card{border-radius:40px 12px 40px 12px!important}
+:root[data-theme="elf"] .firebase-login-mark{border:0;border-radius:50% 50% 50% 10px;transform:rotate(-8deg);color:#ffffff;background:var(--el-grad);box-shadow:0 0 18px rgba(148,232,149,.7)}
+:root[data-theme="elf"] .firebase-login-card>p,:root[data-theme="elf"] .firebase-login-card label{color:var(--el-ink2)}
+:root[data-theme="elf"] .firebase-config-error{color:#43af67}
+:root[data-theme="elf"] .firebase-login-message{color:#58b875}
+
+/* ---------- มือถือ: dock ด้านล่าง ลดฉาก ---------- */
+@media(max-width:760px){
+  :root[data-theme="elf"] .topbar{margin:10px 0 4px;padding-left:12px!important;padding-right:12px!important}
+  :root[data-theme="elf"] .view-nav{position:fixed!important;left:10px;right:10px;bottom:10px;z-index:30;margin:0!important;box-shadow:var(--el-glow),0 10px 28px rgba(126,212,118,.4)}
+  :root[data-theme="elf"] .content-view{padding-bottom:84px}
+  :root[data-theme="elf"] body:has(#content:not([hidden])) .ai-fab{bottom:84px!important}
+}
+
+/* =========================================================
+   ELF FOREST · ชั้นปรับแต่ง (เขียว · ขาว · น้ำตาลนิดเดียว)
+   โทนฟุ้งเหมือนฟิล์มกล้องที่ถ่ายแสงเกิน
+   ========================================================= */
+:root[data-theme="elf"]{
+  --el-ink:#2f4a35; --el-ink2:#5d7a5f; --el-magenta:#3f8a4f;
+  --el-card:rgba(251,255,246,.84);
+  --el-bark:#8a6a4a; --el-bark2:#c9a97f; --el-leaf:#79b36b; --el-leaf2:#a8d49a; --el-cream:#fffdf2;
+  --el-lilac:#bcdcae; --el-lilac2:#e5f2dc; --el-mint:#cfe9bf; --el-rose:#e7d3bd; --el-butter:#fff4c4;
+  --el-grad:linear-gradient(135deg,#7fbe70,#4f9a62);
+  --el-petal:46px 8px 46px 8px;
+  --el-glow:0 0 0 2px rgba(255,255,255,.85),0 0 36px rgba(255,255,226,.85),0 14px 34px rgba(70,110,60,.2);
+}
+/* พื้นหลัง: หมอกป่า + แสงรั่ว */
+:root[data-theme="elf"] body{
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(255,246,196,.95),transparent 38%),
+    radial-gradient(ellipse at 92% 12%,rgba(255,255,240,.9),transparent 34%),
+    radial-gradient(ellipse at 50% 100%,rgba(168,212,154,.85),transparent 48%),
+    linear-gradient(172deg,#f6f9e8 0%,#e8f2d8 42%,#d6e9c8 100%) !important;
+  background-attachment:fixed;
+}
+:root[data-theme="elf"] body::before{
+  background:repeating-linear-gradient(104deg,transparent 0 80px,rgba(255,252,214,.75) 80px 150px,transparent 150px 270px);
+  opacity:.55;filter:blur(10px);
+}
+/* ฟิล์มไหม้ + เกรน + ขอบสว่างเกิน (อยู่บนสุด ไม่รับคลิก) */
+:root[data-theme="elf"] body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:60;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,214,140,.5),transparent 34%),
+    radial-gradient(circle at 0% 100%,rgba(190,240,170,.42),transparent 38%),
+    radial-gradient(ellipse at center,transparent 52%,rgba(255,252,226,.62) 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .5  0 0 0 0 .35  0 0 0 .55 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  mix-blend-mode:soft-light;opacity:.9;
+}
+:root[data-theme="elf"] h1,:root[data-theme="elf"] h2{text-shadow:0 0 18px rgba(255,255,235,.95),0 2px 10px rgba(255,255,255,.9)}
+
+/* ลายไม้/ใบไม้แทน emoji */
+:root[data-theme="elf"] .intro-copy h1:before{content:"❦ ";color:var(--el-leaf)}
+:root[data-theme="elf"] .intro-copy h1:after{content:" ✿";color:#fff;text-shadow:0 0 8px #9bd08b,0 0 2px #7fb26f}
+:root[data-theme="elf"] .view-heading h2:before{content:"❦ ";color:var(--el-leaf)}
+:root[data-theme="elf"] .card-pin{background:none!important;box-shadow:none!important;width:auto;height:auto;top:-14px}
+:root[data-theme="elf"] .card-pin:after{content:"";display:block;width:16px;height:24px;background:linear-gradient(135deg,#9bd08b,#5ea36a);border-radius:0 100% 0 100%;transform:rotate(18deg);box-shadow:0 2px 0 rgba(138,106,74,.55)}
+
+/* น้ำตาลนิดเดียว: ตัวหนังสือเล็ก ๆ เส้นประ ป้าย */
+:root[data-theme="elf"] .eyebrow,:root[data-theme="elf"] .card-kicker,:root[data-theme="elf"] .folder-index,
+:root[data-theme="elf"] .page-footer,:root[data-theme="elf"] .case-context{color:var(--el-bark)!important}
+:root[data-theme="elf"] .page-footer{border-top:2px dotted var(--el-bark2)}
+:root[data-theme="elf"] .folder-label{border-color:var(--el-bark2);box-shadow:0 8px 0 #eadfca,0 14px 26px rgba(90,110,60,.28)!important}
+:root[data-theme="elf"] .folder-back{background:linear-gradient(155deg,#c9a97f,#a98660 55%,#8a6a4a)!important;box-shadow:inset 0 3px #fff7,inset 0 -14px #7a5c3e,0 22px 34px rgba(90,70,40,.35)!important}
+:root[data-theme="elf"] .folder-front{background:linear-gradient(145deg,#eef7e0,#cfe6bd 55%,#b3d79f)!important;box-shadow:inset 0 3px #fffa,inset 0 -11px #98c487!important}
+:root[data-theme="elf"] .folder-tab{background:#fffdf2;color:var(--el-bark)}
+:root[data-theme="elf"] .folder-stamp{border-color:var(--el-bark);color:var(--el-bark)}
+:root[data-theme="elf"] .folder-peek.new-case-peek{background:linear-gradient(145deg,#f5ead6,#e3cfae 62%,#d3b88f)!important}
+:root[data-theme="elf"] .sample-table th{color:var(--el-bark)!important;border-bottom-color:var(--el-bark2)!important}
+:root[data-theme="elf"] .sample-banner{background:#fff4c4;color:#6e5a2a}
+:root[data-theme="elf"] .paper-stamp{border-color:var(--el-bark);color:var(--el-bark)}
+:root[data-theme="elf"] .back-button{border-color:var(--el-bark2)!important}
+
+/* การ์ดเมนูหน้าแรก: เขียว/ขาว/ครีม */
+:root[data-theme="elf"] .upload-card{background:linear-gradient(145deg,#f1f8e4,#d3e9c0)!important}
+:root[data-theme="elf"] .upload-card .card-kicker,:root[data-theme="elf"] .upload-card small{color:#4a6a4a!important}
+:root[data-theme="elf"] .overview-card{background:linear-gradient(145deg,#fffdf0,#f6efc9)!important}
+:root[data-theme="elf"] .ledger-card{background:linear-gradient(145deg,#ffffff,#e3f0d8)!important}
+:root[data-theme="elf"] .settings-card{background:linear-gradient(145deg,#e1f2d3,#bfe0ab)!important}
+:root[data-theme="elf"] .floating-card:hover{box-shadow:0 0 0 2px #fff,0 0 34px rgba(255,255,220,.95),0 20px 30px rgba(70,110,60,.25)!important}
+:root[data-theme="elf"] .primary-action,:root[data-theme="elf"] .settings-save,:root[data-theme="elf"] .ai-summary-button,
+:root[data-theme="elf"] .provider-button,:root[data-theme="elf"] .model-use-button,:root[data-theme="elf"] .archive-add-button,
+:root[data-theme="elf"] .account-link,:root[data-theme="elf"] .case-actions button,:root[data-theme="elf"] .text-action{
+  box-shadow:0 4px 0 #3f7d4c,0 0 18px rgba(255,255,220,.9)!important;text-shadow:0 1px 0 #3a7346;border-radius:24px 6px 24px 6px!important}
+:root[data-theme="elf"] .primary-action:active,:root[data-theme="elf"] .settings-save:active{box-shadow:0 1px 0 #3f7d4c!important}
+:root[data-theme="elf"] .view-nav button.active,:root[data-theme="elf"] .view-nav button:hover{box-shadow:0 0 16px rgba(255,255,220,.95)!important}
+:root[data-theme="elf"] .case-actions #delete-case{background:linear-gradient(135deg,#c9a97f,#a98660)!important;box-shadow:0 4px 0 #7a5c3e!important}
+:root[data-theme="elf"] .topbar{border-radius:40px 10px 40px 10px}
+
+/* ฟรอสต์ฟุ้งนุ่มบนการ์ดทุกใบ */
+:root[data-theme="elf"] .preview-panel,:root[data-theme="elf"] .settings-real,:root[data-theme="elf"] .user-profile-card,
+:root[data-theme="elf"] .user-directory,:root[data-theme="elf"] .permission-note,:root[data-theme="elf"] .login-card,
+:root[data-theme="elf"] .upload-board,:root[data-theme="elf"] .imported-file-panel,:root[data-theme="elf"] .ledger-paper,
+:root[data-theme="elf"] .chart-panel,:root[data-theme="elf"] .cashflow-card,:root[data-theme="elf"] .overview-metrics article,
+:root[data-theme="elf"] .expense-filter-panel,:root[data-theme="elf"] .model-id-card,:root[data-theme="elf"] .artifact-model-library{
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+:root[data-theme="elf"] .owner-input-row,:root[data-theme="elf"] .pdf-password-row,:root[data-theme="elf"] .upload-steps,
+:root[data-theme="elf"] .imported-file,:root[data-theme="elf"] .ledger-paper .preview-filter,:root[data-theme="elf"] .case-score-breakdown span,
+:root[data-theme="elf"] .score-factors,:root[data-theme="elf"] .detail-grid>div,:root[data-theme="elf"] .detail-score,
+:root[data-theme="elf"] .expense-category{background:rgba(238,248,226,.8)!important;border-color:#b9d9a8!important}
+
+/* โทนความเสี่ยง: ปกติ = เขียว · กลาง = ครีมเหลือง · สูง = น้ำตาลอิฐ (สื่อสารชัดแม้โทนพาสเทล) */
+:root[data-theme="elf"] .risk-normal{background:#d4eec5;color:#2f6b3c}
+:root[data-theme="elf"] .risk-mid{background:#fff1b0;color:#7a6320}
+:root[data-theme="elf"] .risk-high{background:#f1cdb8;color:#8a3b22}
+:root[data-theme="elf"] .risk-id-badge{background:linear-gradient(145deg,#f6fff0,#d5ecc6)!important;box-shadow:0 0 0 2px #b2d99e,0 0 30px rgba(255,255,226,.9),0 16px 26px rgba(70,120,60,.25)!important}
+:root[data-theme="elf"] .risk-id-badge.badge-risk-mid{background:linear-gradient(145deg,#fffbe2,#f8e9a0)!important;box-shadow:0 0 0 2px #ecd77e,0 16px 26px rgba(150,120,40,.22)!important}
+:root[data-theme="elf"] .risk-id-badge.badge-risk-high{background:linear-gradient(145deg,#fbeee4,#eec5aa)!important;box-shadow:0 0 0 2px #d9a07c,0 16px 26px rgba(138,80,40,.25)!important}
+:root[data-theme="elf"] .archive-file-card{background:linear-gradient(145deg,#eaf7dc,#c6e4b2)!important;box-shadow:0 0 0 2px #b2d99e,0 0 26px rgba(255,255,226,.8),0 14px 26px rgba(70,120,60,.24)!important}
+:root[data-theme="elf"] .archive-file-card.archive-mid{background:linear-gradient(145deg,#fffbe2,#f6e79a)!important;box-shadow:0 0 0 2px #ecd77e,0 14px 26px rgba(150,120,40,.2)!important}
+:root[data-theme="elf"] .archive-file-card.archive-high{background:linear-gradient(145deg,#f9ebdf,#e8bda0)!important;box-shadow:0 0 0 2px #d9a07c,0 14px 26px rgba(138,80,40,.24)!important}
+:root[data-theme="elf"] .bar-expense{background:linear-gradient(#e8cfb3,#b48a62)}
+:root[data-theme="elf"] .expense-key{background:#b48a62}
+:root[data-theme="elf"] .cashflow-card.expense{border-top-color:#c9a97f!important}
+:root[data-theme="elf"] .overview-cover{background:linear-gradient(145deg,#f4faea,#cfe7bc 58%,#e8f3d6)}
+:root[data-theme="elf"] .user-message{background:#e9ddc6!important;color:#5a4528!important}
+:root[data-theme="elf"] .assistant-message{background:#e1f2d3!important;color:#2f5236!important}
+:root[data-theme="elf"] .chat-head{background:linear-gradient(135deg,#e1f2d3,#fff6cf)!important}
+:root[data-theme="elf"] .ai-fab{background:radial-gradient(circle at 35% 28%,#fff,#eaf6df 45%,#a8d49a 100%)!important;color:#2f6b3c!important;box-shadow:0 0 26px rgba(255,255,220,.95),0 10px 22px rgba(70,120,60,.35)!important}
+:root[data-theme="elf"] .score-modal{background:rgba(40,70,45,.4)}
+:root[data-theme="elf"] .auth-screen{background:linear-gradient(170deg,#f6f9e8,#e8f2d8 45%,#d6e9c8)!important}
+
+/* =========================================================
+   ฉากป่าเอลฟ์ (สร้างโดย elf-forest.js)
+   ========================================================= */
+.elf-scene{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.elf-scene svg{display:block;overflow:visible}
+.elf-scene>*{position:absolute;user-select:none}
+.el-tree{top:-4%;height:108%;width:15vw;min-width:110px;opacity:.5;filter:blur(2.5px)}
+.el-tree svg{width:100%;height:100%}
+.el-tl{left:-3vw}.el-tr{right:-3vw;transform:scaleX(-1)}
+.el-tree2{top:0;height:100%;width:9vw;min-width:70px;opacity:.28;filter:blur(5px)}
+.el-t2l{left:11vw}.el-t2r{right:11vw;transform:scaleX(-1)}
+.el-tree2 svg{width:100%;height:100%}
+.el-vine{top:-6px;width:min(36vw,380px);opacity:.92;transform-origin:top left;animation:elVine 9s ease-in-out infinite alternate;filter:drop-shadow(0 0 6px rgba(255,255,230,.8))}
+.el-vl{left:0}.el-vr{right:0;transform-origin:top right;transform:scaleX(-1);animation-name:elVineR}
+.el-vine svg{width:100%;height:auto}
+@keyframes elVine{from{transform:rotate(-1.2deg)}to{transform:rotate(1.6deg)}}
+@keyframes elVineR{from{transform:scaleX(-1) rotate(-1.2deg)}to{transform:scaleX(-1) rotate(1.6deg)}}
+.el-ground{left:0;right:0;bottom:0;height:150px;background:linear-gradient(to top,rgba(122,176,104,.55),rgba(168,212,154,.25) 55%,transparent);filter:blur(.5px)}
+.el-ground::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(to top,rgba(138,106,74,.35),transparent)}
+.el-flower{position:absolute;bottom:0;transform-origin:50% 100%;animation:elSway 5s ease-in-out infinite alternate;filter:drop-shadow(0 0 5px rgba(255,255,235,.9))}
+.el-flower svg{width:100%;height:auto}
+@keyframes elSway{from{transform:rotate(-3.5deg)}to{transform:rotate(3.5deg)}}
+.el-mote{bottom:-12px;border-radius:50%;background:radial-gradient(circle,#fffef0 0,rgba(255,252,210,.7) 40%,transparent 70%);animation:elMote linear infinite}
+@keyframes elMote{
+  0%{transform:translate(0,0) scale(.6);opacity:0}
+  12%{opacity:.95}
+  50%{transform:translate(var(--dx),-55vh) scale(1.1);opacity:.7}
+  100%{transform:translate(calc(var(--dx)*-.6),-112vh) scale(.7);opacity:0}
+}
+.el-leaf{top:-40px;animation:elFall linear infinite;filter:drop-shadow(0 4px 5px rgba(60,100,50,.25))}
+.el-leaf svg{width:100%;height:auto}
+@keyframes elFall{
+  0%{transform:translate(0,-6vh) rotate(0deg);opacity:0}
+  8%{opacity:.9}
+  50%{transform:translate(var(--dx),55vh) rotate(180deg)}
+  100%{transform:translate(calc(var(--dx)*-.5),112vh) rotate(380deg);opacity:.2}
+}
+.el-glow{width:10px;height:10px;border-radius:50%;background:#fffbd0;box-shadow:0 0 14px 6px rgba(255,248,178,.85);animation:elFirefly 6s ease-in-out infinite alternate}
+@keyframes elFirefly{
+  0%{transform:translate(0,0) scale(.6);opacity:.25}
+  50%{opacity:1}
+  100%{transform:translate(34px,-44px) scale(1.2);opacity:.4}
+}
+.el-bfly{width:34px;animation:elBfly 26s linear infinite;filter:drop-shadow(0 0 6px rgba(255,255,235,.95))}
+.el-bfly svg{width:100%;height:auto}
+.el-b1{top:34%;left:-6%}.el-b2{top:68%;left:-6%;width:26px;animation-duration:34s;animation-delay:-14s}
+@keyframes elBfly{
+  0%{transform:translate(-8vw,0)}20%{transform:translate(18vw,-40px)}40%{transform:translate(40vw,22px)}
+  60%{transform:translate(62vw,-32px)}80%{transform:translate(86vw,14px)}100%{transform:translate(115vw,-22px)}
+}
+.el-flap{animation:elFlap .38s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes elFlap{from{transform:scaleX(1)}to{transform:scaleX(.4)}}
+.el-elf{bottom:6px;left:-8vw;width:74px;animation:elWalk 80s linear infinite;filter:drop-shadow(0 0 8px rgba(255,255,230,.9))}
+.el-elf svg{width:100%;height:auto;animation:elBob .7s ease-in-out infinite alternate;transform-origin:50% 100%}
+.el-elf2{width:54px;animation-duration:110s;animation-delay:-52s;bottom:2px;opacity:.9}
+@keyframes elWalk{from{transform:translateX(0)}to{transform:translateX(125vw)}}
+@keyframes elBob{from{transform:translateY(0) rotate(-1.5deg)}to{transform:translateY(-4px) rotate(1.5deg)}}
+.elf-pop{position:fixed;z-index:9999;pointer-events:none;font-size:20px;text-shadow:0 0 8px rgba(255,255,230,.95);animation:elPop 1s ease-out forwards}
+@keyframes elPop{to{transform:translate(var(--dx),var(--dy)) scale(1.4) rotate(60deg);opacity:0}}
+
+/* ---------- มือถือ ---------- */
+@media(max-width:760px){
+  .el-tree2,.el-t2l,.el-t2r{display:none}
+  .el-elf{width:52px}.el-elf2{display:none}
+  .el-ground{height:110px}
+  .el-flower:nth-child(3n){display:none}
+  .el-mote:nth-child(even){display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  :root[data-theme="elf"] body::before,.el-vine,.el-flower,.el-mote,.el-leaf,.el-glow,.el-bfly,.el-flap,.el-elf,.el-elf svg,
+  :root[data-theme="elf"] .ai-fab{animation:none!important}
+}
+
+/* ข้อความผิดพลาด = น้ำตาลอิฐ (ไม่ใช้เขียว จะได้ไม่สับสนกับสถานะปกติ) */
+:root[data-theme="elf"] .upload-error{background:#f6e1d4;color:#8a3b22;border-left-color:#c9825a}
+:root[data-theme="elf"] .firebase-config-error,:root[data-theme="elf"] .firebase-login-message{color:#9a4a2a}
+:root[data-theme="elf"] .delete-file-button{background:#f9ece3;color:#8a3b22;border-color:#e0b79c}
+:root[data-theme="elf"],:root[data-theme="elf"] body{min-height:100vh}
+:root[data-theme="elf"]{background:#e8f2d8}
