@@ -58,61 +58,12 @@ const savedTheme = localStorage.getItem('detected-theme') || 'dark';
 document.documentElement.dataset.theme = savedTheme;
 const state = { view:'home', risk:'ทั้งหมด', search:'', month:'all', person:'all', expenseCategories:[],incomeOnly:false, selected:null, uploading:false, activeModel:'ensemble', settings:{suspicious_threshold:40,high_threshold:70,theme:savedTheme}, chatHistory:[] };
 function applyTheme(theme){
-  const value=['light','mermaid','dark'].includes(theme)?theme:'dark';
+  const value=['light','dark'].includes(theme)?theme:'dark';
   document.documentElement.dataset.theme=value;
   localStorage.setItem('detected-theme',value);
   state.settings.theme=value;
-  document.body.classList.toggle('mermaid-active',value==='mermaid');
-  ensureMermaidScene(value==='mermaid');
-}
-function ensureMermaidScene(enabled){
-  let scene=document.querySelector('.mermaid-theme-scene');
-  if(enabled && !scene){
-    scene=document.createElement('div'); scene.className='mermaid-theme-scene'; scene.setAttribute('aria-hidden','true');
-    scene.innerHTML='<div class="sea-mermaid mermaid1">🧜🏻‍♀️</div><div class="sea-mermaid mermaid2">🧜🏽‍♀️</div><div class="sea-mermaid mermaid3">🧜🏼‍♀️</div><div class="sea-fish fish1">🐠</div><div class="sea-fish fish2">🐟</div><div class="sea-fish fish3">🐡</div><div class="sea-fish fish4">🐠</div><div class="sea-jelly jelly1">🪼</div><div class="sea-jelly jelly2">🪼</div><div class="sea-sponge sponge1"></div><div class="sea-sponge sponge2"></div><div class="sea-coral coral1">🪸</div><div class="sea-coral coral2">🪸</div><div class="sea-shell shell1">🐚</div><div class="sea-shell shell2">🐚</div><div class="mermaid-bubbles"></div><div class="mermaid-hearts">♡　✦　♡　✧　♡</div>';
-    document.body.prepend(scene);
-  } else if(!enabled && scene){ scene.remove(); }
 }
 
-/* Mermaid fish gently chase the mouse pointer. */
-(function setupMermaidMouseFish(){
-  let pointer={x:window.innerWidth*.5,y:window.innerHeight*.5};
-  let targets=[];
-  let raf=0;
-  let running=false;
-  document.addEventListener('pointermove', e=>{
-    pointer.x=e.clientX; pointer.y=e.clientY;
-  }, {passive:true});
-  function tick(){
-    const enabled=document.documentElement.dataset.theme==='mermaid';
-    const fish=[...document.querySelectorAll('.mermaid-theme-scene .sea-fish')];
-    if(enabled && fish.length){
-      if(targets.length!==fish.length) targets=fish.map((_,i)=>({x:window.innerWidth*(.2+i*.28),y:window.innerHeight*(.25+(i%3)*.2)}));
-      fish.forEach((el,i)=>{
-        const t=targets[i];
-        const strength=.018+i*.006;
-        t.x += (pointer.x + (i-1)*75 - t.x)*strength;
-        t.y += (pointer.y + (i-1)*45 - t.y)*strength;
-        const dx=t.x-window.innerWidth/2, dy=t.y-window.innerHeight/2;
-        el.style.transform=`translate3d(${dx*.08}px,${dy*.08}px,0) rotate(${Math.max(-10,Math.min(10,dx*.018))}deg)`;
-      });
-    }
-    raf=requestAnimationFrame(tick);
-  }
-  if(!running){running=true; raf=requestAnimationFrame(tick);}
-})();
-
-function mermaidGlitter(x,y){
-  if(document.documentElement.dataset.theme!=='mermaid') return;
-  const layer=document.querySelector('.mermaid-glitter-layer') || (()=>{const el=document.createElement('div');el.className='mermaid-glitter-layer';document.body.append(el);return el;})();
-  for(let i=0;i<16;i++){
-    const s=document.createElement('span'); s.className='glitter-particle';
-    s.textContent=i%4===0?'♥':(i%3===0?'✦':'✧');
-    const a=Math.random()*Math.PI*2, d=25+Math.random()*80;
-    s.style.left=`${x}px`; s.style.top=`${y}px`; s.style.setProperty('--dx',`${Math.cos(a)*d}px`); s.style.setProperty('--dy',`${Math.sin(a)*d}px`); s.style.setProperty('--delay',`${Math.random()*80}ms`);
-    layer.append(s); setTimeout(()=>s.remove(),900);
-  }
-}
 applyTheme(savedTheme);
 const home = document.querySelector('#home'), content = document.querySelector('#content'), viewContent = document.querySelector('#view-content');
 /* Detected. Firebase Authentication */
@@ -339,7 +290,7 @@ async function modelsView() {
 async function settingsView() {
   try{const r=await fetch('/api/settings');if(r.ok){state.settings={...state.settings,...await r.json()};state.activeModel=state.settings.active_model||state.activeModel;}}catch{}
   if(state.view!=='settings')return;
-  viewContent.innerHTML=`${viewHeading('SETTING / 06','ตั้งค่า','กำหนดเงื่อนไขและเลือกธีม')}<section class="preview-panel settings-real"><h3>เกณฑ์ระดับความเสี่ยง</h3><p>ใช้กับ Risk Score ตั้งแต่การคำนวณครั้งถัดไป</p><div class="settings-preview"><label>เริ่ม SUSPICIOUS ตั้งแต่<input type="number" id="setting-suspicious" value="${state.settings.suspicious_threshold}" min="1" max="99"></label><label>เริ่ม HIGH RISK ตั้งแต่<input type="number" id="setting-high" value="${state.settings.high_threshold}" min="2" max="100"></label><label>ธีมการแสดงผล<select id="setting-theme"><option value="dark" ${state.settings.theme==='dark'?'selected':''}>Dark</option><option value="light" ${state.settings.theme==='light'?'selected':''}>Light</option><option value="mermaid" ${state.settings.theme==='mermaid'?'selected':''}>🧜‍♀️ Mermaid Romance</option></select></label></div><p id="settings-error" class="upload-error" hidden></p><button class="settings-save" id="save-settings">บันทึกการตั้งค่า</button><p class="model-note">โมเดลที่ใช้งาน: ${esc(state.activeModel)}</p></section>`;
+  viewContent.innerHTML=`${viewHeading('SETTING / 06','ตั้งค่า','กำหนดเงื่อนไขและเลือกธีม')}<section class="preview-panel settings-real"><h3>เกณฑ์ระดับความเสี่ยง</h3><p>ใช้กับ Risk Score ตั้งแต่การคำนวณครั้งถัดไป</p><div class="settings-preview"><label>เริ่ม SUSPICIOUS ตั้งแต่<input type="number" id="setting-suspicious" value="${state.settings.suspicious_threshold}" min="1" max="99"></label><label>เริ่ม HIGH RISK ตั้งแต่<input type="number" id="setting-high" value="${state.settings.high_threshold}" min="2" max="100"></label><label>ธีมการแสดงผล<select id="setting-theme"><option value="dark" ${state.settings.theme==='dark'?'selected':''}>Dark</option><option value="light" ${state.settings.theme==='light'?'selected':''}>Light</option></select></label></div><p id="settings-error" class="upload-error" hidden></p><button class="settings-save" id="save-settings">บันทึกการตั้งค่า</button><p class="model-note">โมเดลที่ใช้งาน: ${esc(state.activeModel)}</p></section>`;
 }
 function loginView(){
   const email = currentUser?.email || 'ผู้ใช้ปัจจุบัน';
@@ -415,7 +366,6 @@ async function saveSettings(){const err=document.querySelector('#settings-error'
 async function sendChat(question){const body=document.querySelector('.chat-body');body.insertAdjacentHTML('beforeend',`<div class="user-message">${esc(question)}</div><div class="assistant-message typing-message">กำลังอ่านข้อมูลในแฟ้ม…</div>`);body.scrollTop=body.scrollHeight;const typing=body.querySelector('.typing-message:last-child');try{const r=await fetch('/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,history:state.chatHistory,transactions:aiRows(filteredRows())})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.detail||'AI ยังไม่พร้อมใช้งาน');typing.textContent=d.answer;state.chatHistory.push({role:'user',content:question},{role:'assistant',content:d.answer});state.chatHistory=state.chatHistory.slice(-8);}catch(e){typing.textContent=`ยังตอบไม่ได้: ${e.message}`;}body.scrollTop=body.scrollHeight;}
 
 document.addEventListener('click',async event=>{
-  if(document.documentElement.dataset.theme==='mermaid' && !event.target.closest('input,select,textarea')) mermaidGlitter(event.clientX,event.clientY);
   const viewButton=event.target.closest('[data-view]');if(viewButton){event.preventDefault();openView(viewButton.dataset.view);return;}
   const caseButton=event.target.closest('[data-case]');if(caseButton){if(caseButton.dataset.case==='__new_case__'){createCase();return;}activateCase(caseButton.dataset.case,cases.findIndex(c=>c.id===caseButton.dataset.case)<cases.findIndex(c=>c.id===activeCaseId)?-1:1);toast(`เปิด ${activeCase().name}`);return;}
   const renameButton=event.target.closest('[data-rename-case]');if(renameButton){renameCase(renameButton.dataset.renameCase);return;}
@@ -491,4 +441,3 @@ folderScene?.addEventListener('pointercancel',()=>{folderPointer=null;});
 folderScene?.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){stepCase(-1);event.preventDefault();}if(event.key==='ArrowRight'){stepCase(1);event.preventDefault();}});
 document.querySelector('#chat-form').addEventListener('submit',event=>{event.preventDefault();const input=document.querySelector('#chat-input'),q=input.value.trim();if(!q)return;input.value='';sendChat(q);});
 renderCaseCarousel();loadTransactions();
-
